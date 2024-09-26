@@ -12,7 +12,7 @@ const ViewProperty = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/view-properties');
+        const response = await axios.get('http://77.37.125.30:5000/api/view-properties');
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
@@ -40,7 +40,7 @@ const ViewProperty = () => {
             <div key={index} className="property-card">
               <div className="property-image-container">
                 <img
-                  src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
+                  src={`http://77.37.125.30:5000${property.image || '/assets/default-property.jpg'}`}
                   alt={property.name}
                   className="property-image"
                 />

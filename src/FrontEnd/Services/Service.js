@@ -102,7 +102,7 @@ const Services = () => {
         // Submit the form
         const formWithServiceType = { ...formData, serviceType };
 
-        axios.post('http://localhost:5000/other-services', formWithServiceType)
+        axios.post('http://77.37.125.30:5000/other-services', formWithServiceType)
             .then((response) => {
                 setSuccessMessage(true);
                 setFormData({

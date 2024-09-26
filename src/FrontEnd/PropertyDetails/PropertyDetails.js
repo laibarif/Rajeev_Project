@@ -13,7 +13,7 @@ const PropertyDetails = () => {
     useEffect(() => {
         const fetchPropertyDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/property/${id}`);
+                const response = await axios.get(`http://77.37.125.30:5000/api/property/${id}`);
                 setProperty(response.data);
             } catch (error) {
                 console.error('Error fetching property details:', error);
@@ -71,7 +71,7 @@ const PropertyDetails = () => {
             <div className="property-detail-card">
                 <div className="property-image-container">
                     <img
-                        src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
+                        src={`http://77.37.125.30:5000${property.image || '/assets/default-property.jpg'}`}
                         alt={property.name}
                         className="property-image"
                     />

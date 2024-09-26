@@ -5,6 +5,7 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+require('dotenv').config();
 
 const app = express();
 
@@ -15,10 +16,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MySQL connection pool
 const pool = mysql.createPool({
-  host: '82.197.82.66',  
-  user: 'u500774472_admin',        
-  password: 'Admin_password2024',  
-  database: 'u500774472_blessedbypba',
+  host: process.env.DB_HOST,  
+  user: process.env.DB_USER,        
+  password: process.env.DB_PASSWORD,  
+  database: process.env.DB_NAME,
   waitForConnections: true,           
   connectionLimit: 10,                
   queueLimit: 0,                      
@@ -245,7 +246,7 @@ app.post('/api/enquiries', (req, res) => {
 });
 
 // Start server
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

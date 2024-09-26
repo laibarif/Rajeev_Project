@@ -95,7 +95,7 @@ const EnquiryPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/enquiries', {
+            const response = await axios.post('http://77.37.125.30:5000/api/enquiries', {
                 propertyId: id, // Include property ID
                 propertyName: name, // Include property name
                 ...formData, // Include form data
