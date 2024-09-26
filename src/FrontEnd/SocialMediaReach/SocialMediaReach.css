@@ -1,0 +1,160 @@
+.social-media-reach {
+    text-align: center;
+    padding: 20px;
+}
+
+.social-media-reach h1 {
+    font-weight: bold;
+    color: #A93339;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.social-media-list {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.2rem;
+    color: #A93339;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.social-media-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 15px 0;
+}
+
+.social-icon {
+    width: 60px;  /* Adjusted width for better alignment */
+    font-size: 2.5rem; /* Adjusted font size for icons */
+    text-align: center;
+}
+
+/* Specific colors for each social media icon */
+.social-icon.facebook {
+    color: #4267B2 !important; /* Facebook Blue */
+}
+
+.social-icon.instagram {
+    color: #E1306C !important; /* Instagram Pink */
+}
+
+.social-icon.whatsapp {
+    color: #25D366 !important; /* WhatsApp Green */
+}
+
+.social-icon.youtube {
+    color: #FF0000 !important; /* YouTube Red */
+}
+
+.social-icon.tiktok {
+    color: #010101 !important; /* TikTok Black (Primary) */
+}
+
+.social-icon.users {
+    color: black !important; /* Use the primary theme color for the generic group icon */
+}
+
+.item-text {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 10px;
+    font-size: 1.4rem;
+}
+
+.platform-name {
+    font-weight: bold;
+    color: black;
+}
+
+.follower-count {
+    font-weight: bold;
+    color: #da6e73;
+    font-size: 1.3rem;
+    margin-left: 10px;
+}
+
+.follow-button,
+.join-button,
+.subscribe-button {
+    background-color: #888181;
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Adjusted padding for better button size */
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 110px; /* Ensures buttons are wide enough */
+    text-align: center;
+}
+
+.follow-button:hover,
+.join-button:hover,
+.subscribe-button:hover {
+    background-color: #d68d91;
+}
+
+.hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 15px 0;
+    width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .social-media-reach h1 {
+        font-size: 2rem; /* Smaller font size for headings */
+    }
+
+    .social-media-list {
+        font-size: 1rem; /* Smaller font size for list items */
+        max-width: 100%; /* Full width on smaller screens */
+    }
+
+    .social-icon {
+        width: 50px; /* Smaller icon size */
+        font-size: 2rem; /* Smaller font size for icons */
+    }
+
+    .item-text {
+        font-size: 1.2rem; /* Smaller text size */
+    }
+
+    .follower-count {
+        font-size: 1rem; /* Smaller font size for follower count */
+    }
+
+    .follow-button,
+    .join-button,
+    .subscribe-button {
+        padding: 6px 12px; /* Smaller padding for buttons */
+        font-size: 0.9rem; /* Smaller font size for buttons */
+    }
+}
+
+@media (max-width: 480px) {
+    .social-media-reach h1 {
+        font-size: 1.5rem; /* Further reduce heading size */
+    }
+
+    .social-media-list {
+        font-size: 0.9rem; /* Even smaller font size */
+    }
+
+    .item-text {
+        font-size: 1rem; /* Smaller text size */
+    }
+
+    .follow-button,
+    .join-button,
+    .subscribe-button {
+        padding: 5px 10px; /* Adjust button padding */
+        font-size: 0.8rem; /* Smaller font size for buttons */
+    }
+}

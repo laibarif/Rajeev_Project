@@ -1,0 +1,213 @@
+/* Styling the Admin Page */
+.admin-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    
+  }
+  
+  .admin-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .admin-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-nav button {
+    background-color: #A93339;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .admin-nav button:hover {
+    background-color: #A93339;
+  }
+  
+  .admin-nav button:focus {
+    outline: none;
+  }
+  
+  .content-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Styling the Add Property Form */
+  .form-message {
+    color: green;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-message.error {
+    color: red;
+}
+
+.market-property-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+/* Form layout */
+.market-property-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.form-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+}
+
+.form-image img {
+    width: 450px;
+    height: auto;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-fields h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.form-group-checkbox {
+  display: flex;
+  align-items: center;  /* Aligns the checkbox vertically with the label */
+  gap: 10px;  /* Adds space between the label and checkbox */
+  margin-bottom: 20px;
+}
+
+.form-group-checkbox label {
+  font-size: 1rem;
+}
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cancel-btn,
+.submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cancel-btn {
+    background-color: #ccc;
+    color: #333;
+}
+
+.submit-btn {
+    background-color: #A93339;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #A93339;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none; /* Prevent resizing */
+    height: 120px; /* Adjust the height of the textarea */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .market-property-form {
+        width: 100%;
+    }
+
+    .form-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-image img {
+        width: 180px;
+        margin-bottom: 20px;
+    }
+
+    .form-fields h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-buttons {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .market-property-form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .form-fields h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+    }
+
+    .cancel-btn,
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

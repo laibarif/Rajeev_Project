@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import { Route, Routes,useLocation } from 'react-router-dom';
+import Navbar from './FrontEnd/Navbar/Navbar'; 
+import Home from './FrontEnd/Home/Home'; 
+import Footer from './FrontEnd/Footer/Footer'; 
+import MarketMyProperty from './FrontEnd/MarketMyProperty/MarketMyProperty';
+import ChatWithUs from './FrontEnd/ChatWithUs/ChatWithUs';
+import Services from './FrontEnd/Services/Service';
+import Login from './FrontEnd/Login/Login';
+import Adminpage from './FrontEnd/Adminpage/Adminpage';
+import PropertyDetails from './FrontEnd/PropertyDetails/PropertyDetails';
+import Enquiry from './FrontEnd/Enquiry/Enquiry'; 
+import WhySellWithUs from './FrontEnd/WhySellWithUs/WhySellWithUs';
+import AboutUs from './FrontEnd/AboutUs/AboutUs';
+import SocialMediaReach from './FrontEnd/SocialMediaReach/SocialMediaReach';
 import './App.css';
 
 function App() {
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route index element={<Home/>} />
+        <Route path="/market-my-property" element={<MarketMyProperty />} />
+        <Route path="/chatwithus" element={<ChatWithUs />} />
+        <Route path="/service/:serviceType" element={<Services />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/adminpage" element={<Adminpage />} />
+        <Route path="/why-sell-with-us" element={<WhySellWithUs />} />
+        <Route path="/social-media-reach" element={<SocialMediaReach />} />
+        <Route path="/property/:id" element={<PropertyDetails />} />
+        <Route path="/enquire/:id" element={<Enquiry />} />
+
+      </Routes>
+      {location.pathname !== '/login' && <Footer />}
+    </>
   );
 }
 

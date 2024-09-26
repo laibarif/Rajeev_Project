@@ -1,0 +1,197 @@
+.why-sell-with-us {
+    text-align: center;
+    padding: 20px;
+}
+
+.why-sell-with-us h1 {
+    font-weight: bold;
+    color: #A93339;
+    font-size: 2.5rem; 
+}
+
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap; 
+}
+
+.social-media-icons a {
+    margin: 10px; 
+    color: #A93339;
+    transition: color 0.3s;
+}
+
+.social-media-icons .facebook-icon {
+    color: #4267B2; /* Facebook Blue */
+}
+
+/* Instagram Icon - Original Gradient (usually solid fallback color) */
+.social-media-icons .instagram-icon {
+    color: #E1306C; /* Instagram Pink */
+}
+
+/* WhatsApp Icon - Original Green */
+.social-media-icons .whatsapp-icon {
+    color: #25D366; /* WhatsApp Green */
+}
+
+/* Twitter Icon - Original Blue */
+.social-media-icons .twitter-icon {
+    color: #1DA1F2; /* Twitter Blue */
+}
+
+/* LinkedIn Icon - Original Blue */
+.social-media-icons .linkedin-icon {
+    color: #0077B5; /* LinkedIn Blue */
+}
+
+/* Email Icon - Any standard color (orange or black) */
+.social-media-icons .email-icon {
+    color: #D44638; /* Standard email icon color (can vary by brand) */
+}
+
+.social-media-icons a:hover {
+    transform: scale(1.2); /* Optional: Slight zoom effect on hover */
+}
+
+
+/* Box shadow and border for bullet points section */
+.sell-reasons-box {
+    border: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    padding: 30px;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #fff, #f9f9f9); /* Soft gradient */
+    border-radius: 15px;
+    max-width: 700px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Subtle hover effect */
+}
+
+.sell-reasons-box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.sell-reasons-list {
+    list-style-type: none; /* Remove default bullets */
+    text-align: left;
+    padding-left: 0;
+    width: 100%;
+}
+
+.sell-reasons-list li {
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Larger font size for readability */
+    color: #333; /* Darker color for text */
+    display: flex;
+    align-items: center; /* Align icons with text */
+    transition: color 0.3s ease;
+}
+
+.sell-reasons-list li:hover {
+    color: #A93339; /* Change color on hover */
+}
+
+.sell-reasons-list li::before {
+    content: '✔️'; /* You can replace this with an icon (like from FontAwesome) */
+    margin-right: 15px;
+    color: #A93339; /* Icon color */
+    font-size: 1.2rem;
+    transition: transform 0.3s ease; /* Optional icon animation */
+}
+
+.sell-reasons-list li:hover::before {
+    transform: scale(1.3); /* Scale the icon on hover */
+}
+
+
+/* Button styling */
+.button-container {
+    display: flex;  /* Ensure buttons are aligned in a row */
+    justify-content: center; /* Center the buttons */
+    gap: 240px !important; /* Adds space between the buttons */
+    margin-top: 20px; 
+}
+
+.market-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #A93339;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.social-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #A93339;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.market-button:hover {
+    background-color: #d68d91;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.social-button:hover {
+    background-color: #d68d91;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+    .why-sell-with-us h1 {
+        font-size: 2rem; 
+    }
+
+    .sell-reasons-box {
+        max-width: 90%; 
+        padding: 15px 25px; 
+    }
+
+    .sell-reasons-list li {
+        font-size: 1rem; 
+    }
+
+    .market-button {
+        font-size: 1rem; 
+        padding: 8px 16px; 
+    }
+    .social-button {
+        font-size: 1.1rem; 
+        padding: 8px 16px; 
+    }
+
+    .social-media-icons a {
+        margin: 5px; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .why-sell-with-us h1 {
+        font-size: 1.8rem; 
+        }
+    .sell-reasons-box {
+        max-width: 95%;
+        padding: 15px 30px; 
+    }
+    .sell-reasons-list li {
+        font-size: 0.9rem; 
+    }
+
+    .social-button {
+        font-size: 0.9rem; 
+        padding: 7px 14px;
+    }
+}

@@ -1,0 +1,258 @@
+/* General Footer Styling */
+.footer {
+  background-color: #A93339;
+  color: white;
+  padding: 20px 40px;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0 auto;
+  gap: 15px; /* Added more gap for better spacing */
+}
+
+.footer-brand-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+/* Contact Info Styling */
+.footer-contact {
+  margin-bottom: 20px;
+}
+
+.footer-contact .contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20px;  /* Reduce margin for better spacing */
+  margin-bottom: 10px;  /* Reduce margin to avoid large gaps */
+}
+
+.footer-contact .contact-item svg {
+  font-size: 1.5rem; /* Adjust icon size */
+  margin-right: 10px; /* Space between icon and text */
+  margin-top: -20px;
+}
+
+.footer-contact .contact-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+.footer-contact .contact-info {
+  font-size: 1rem;
+  margin-top: 4px;
+  word-wrap: break-word; /* Break long text in small screens */
+  word-break: break-all;  /* Ensure it wraps on very small screens */
+  max-width: 200px;
+}
+
+/* Quick Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.footer-section h3 {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.footer-links li {
+  margin: 18px 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #d68d91;
+}
+
+/* Newsletter Signup */
+.newsletter-section {
+  padding-left: 10px;
+}
+
+.footer-input {
+  padding: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: black;
+}
+
+.footer-button {
+  padding: 12px 20px;
+  background-color: #888181;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+}
+
+.footer-button:hover {
+  background-color: #d68d91;
+}
+
+/* Social Icons */
+.footer-social {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.footer-social svg {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Specific colors for each social media icon */
+.facebook-icon svg {
+  color: #4267B2; /* Facebook Blue */
+}
+
+.instagram-icon svg {
+  color: #fa6093; /* Instagram Pink */
+}
+
+.whatsapp-icon svg {
+  color: #25D366; /* WhatsApp Green */
+}
+
+.youtube-icon svg {
+  color: #fe1313; /* YouTube Red */
+}
+
+.footer-social svg:hover {
+  color: #d68d91;
+}
+
+/* Bottom Footer Section */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 1.1rem;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design for Mobile and Tablet */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-section,
+  .newsletter-section {
+    padding: 0 20px; /* Adjust padding for small screens */
+    width: 100%; /* Make sections take full width */
+  }
+
+  .footer-bottom {
+    flex-direction: column; /* Stack items on top of each other */
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .footer-bottom a {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .footer-social svg {
+    font-size: 1.8rem; /* Slightly reduce size on mobile */
+  }
+
+  .footer-social {
+    margin-bottom: 15px; /* Add some space between social icons and text */
+  }
+  .footer-input,
+  .footer-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section h3 {
+    font-size: 1.3rem; /* Reduce heading size for smaller screens */
+  }
+
+  .footer-links a {
+    font-size: 1rem; /* Adjust link size for mobile */
+  }
+
+  .footer-bottom {
+    font-size: 0.9rem; /* Further reduce footer text size */
+  }
+
+  .footer-contact .contact-item svg {
+    font-size: 1.2rem; /* Adjust icon size for mobile */
+    margin-top: 0; /* Align icons properly for mobile */
+    margin-top: -25px;
+  }
+
+  .footer-bottom a {
+    font-size: 0.9rem; /* Adjust link font size for mobile */
+  }
+}

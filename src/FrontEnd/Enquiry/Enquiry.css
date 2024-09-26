@@ -1,0 +1,178 @@
+/* Container for form and image */
+.market-property-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Form layout */
+  .market-property-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 850px;
+  }
+  
+  .form-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+  }
+  
+  .form-image img {
+    width: 350px;
+    height: auto;
+  }
+  
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+  }
+  
+  .form-fields h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #A93339;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .cancel-btn, .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .submit-btn {
+    background-color: #A93339;
+    color: white;
+  }
+  
+  .submit-btn:hover {
+    background-color: #A93339;
+  }
+  
+  /* Additional buttons below the form */
+  .additional-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .action-btn {
+    padding: 10px 30px !important;
+    background-color: #A93339;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.0rem !important;
+    cursor: pointer;
+    margin-right: 10px;
+    width: auto !important;
+  }
+  .action-btn:last-child {
+    margin-right: 0;
+  }
+  .action-btn:hover {
+    background-color: #A93339;
+  }
+  .success-message {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .market-property-form {
+      width: 90%;
+    }
+  
+    .form-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .form-image img {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+  
+    .form-fields h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  
+    .form-buttons {
+      flex-direction: row;
+      gap: 10px;
+    }
+  
+    .additional-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .action-btn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .market-property-form {
+      padding: 20px;
+      width: 90%;
+    }
+  
+    .form-fields h2 {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  
+    .form-group input {
+      font-size: 0.9rem;
+    }
+  
+    .cancel-btn, .submit-btn {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }

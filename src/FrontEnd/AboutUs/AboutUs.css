@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 10px;
+}
+
+.heading {
+  color: #A93339;
+  font-size: 2.0rem;
+  font-weight: bold;
+  /* margin-bottom: 2px; */
+  letter-spacing: 1px;
+  text-transform: uppercase; /* Adds a professional touch */
+}
+
+.about-text {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.8; /* Better spacing between lines */
+  margin-top: 10px;
+  margin-bottom: 30px;
+  max-width: 800px; /* Limit text width for readability */
+  padding: 20px; /* Adds padding inside the text box */
+  background-color: #fff; /* Adds a white background for contrast */
+  border-radius: 10px; /* Rounds the corners of the background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+  text-align: left; /* Align text to left */
+  word-spacing: 0.05rem; /* Adds slight word spacing for readability */
+}
+
+.about-text span {
+  color: #A93339;
+  font-weight: bold; /* Highlights important text */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #A93339;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d68d91;
+}
+
+/* Media Query for Tablets and Smaller Screens */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+  }
+
+  .about-text {
+    font-size: 1.2rem;
+    padding: 15px;
+  }
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .button-container {
+    gap: 10px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}
