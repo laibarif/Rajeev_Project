@@ -11,6 +11,7 @@ import {
   FaTwitter,
   FaTimes,
 } from "react-icons/fa";
+import { BACKEND_URL } from "../../utils/constant";
 
 const ViewProperty = () => {
   const [properties, setProperties] = useState([]);
@@ -21,9 +22,7 @@ const ViewProperty = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get(
-          "https://blessedbypba.org:5000/api/view-properties"
-        );
+        const response = await axios.get(`${BACKEND_URL}/api/view-properties`);
         setProperties(response.data);
       } catch (error) {
         console.error("Error fetching properties:", error);
@@ -106,7 +105,7 @@ const ViewProperty = () => {
             <div key={property.id} className="property-card">
               <div className="property-image-container">
                 <img
-                  src={`http://77.37.125.30:5000${
+                  src={`${BACKEND_URL}${
                     property.image || "/assets/default-property.jpg"
                   }`}
                   alt={property.name}

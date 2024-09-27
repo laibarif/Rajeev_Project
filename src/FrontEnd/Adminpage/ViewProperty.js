@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './ViewProperty.css';  // Make sure the CSS contains grid styling
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./ViewProperty.css"; // Make sure the CSS contains grid styling
+import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../../utils/constant";
 
 const ViewProperty = () => {
   const [properties, setProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const propertiesPerPage = 8;  // 4 cards per row * 2 rows
+  const propertiesPerPage = 8; // 4 cards per row * 2 rows
 
   // Fetch properties from the backend
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://77.37.125.30:5000/api/view-properties');
+        const response = await axios.get(`${BACKEND_URL}/api/view-properties`);
         setProperties(response.data);
       } catch (error) {
-        console.error('Error fetching properties:', error);
+        console.error("Error fetching properties:", error);
       }
     };
     fetchProperties();
@@ -24,7 +25,10 @@ const ViewProperty = () => {
   // Pagination logic
   const indexOfLastProperty = currentPage * propertiesPerPage;
   const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
-  const currentProperties = properties.slice(indexOfFirstProperty, indexOfLastProperty);
+  const currentProperties = properties.slice(
+    indexOfFirstProperty,
+    indexOfLastProperty
+  );
 
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
@@ -40,15 +44,21 @@ const ViewProperty = () => {
             <div key={index} className="property-card">
               <div className="property-image-container">
                 <img
-                  src={`http://77.37.125.30:5000${property.image || '/assets/default-property.jpg'}`}
+                  src={`${BACKEND_URL}${
+                    property.image || "/assets/default-property.jpg"
+                  }`}
                   alt={property.name}
                   className="property-image"
                 />
               </div>
               <div className="property-content">
                 <h3>{property.name}</h3>
-                <p><strong>Location:</strong> {property.location}</p>
-                <p><strong>Price:</strong> {property.price}</p>
+                <p>
+                  <strong>Location:</strong> {property.location}
+                </p>
+                <p>
+                  <strong>Price:</strong> {property.price}
+                </p>
                 <p>{property.description.slice(0, 100)}</p>
                 {property.sold_out ? (
                   <p className="sold-out">Sold Out</p>
@@ -68,7 +78,9 @@ const ViewProperty = () => {
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
-            className={`pagination-btn ${currentPage === index + 1 ? 'active' : ''}`}
+            className={`pagination-btn ${
+              currentPage === index + 1 ? "active" : ""
+            }`}
             onClick={() => paginate(index + 1)}
           >
             {index + 1}
