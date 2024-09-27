@@ -76,7 +76,7 @@ const AddProperty = () => {
     submitData.append('sold_out', formData.soldOut);
 
     try {
-      const response = await axios.post('http://77.37.125.30:5000/api/add-property', submitData, {
+      const response = await axios.post('http://localhost:5000/api/add-property', submitData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

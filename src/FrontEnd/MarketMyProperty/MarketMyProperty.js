@@ -82,7 +82,7 @@ const MarketMyProperty = () => {
         // If email is valid, clear the error message
         setErrorMessage('');
 
-        axios.post('http://77.37.125.30:5000/submit-property', formData)
+        axios.post('http://localhost:5000/submit-property', formData)
             .then((response) => {
                 // Show success message
                 setSuccessMessage(true);

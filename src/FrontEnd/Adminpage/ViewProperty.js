@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ViewProperty.css';  // Make sure the CSS contains grid styling
-import { Link } from 'react-router-dom';
+import './ViewProperty.css';  // Ensure the CSS contains grid and card styling
 
 const ViewProperty = () => {
   const [properties, setProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const propertiesPerPage = 8;  // 4 cards per row * 2 rows
+  const propertiesPerPage = 8;
 
   // Fetch properties from the backend
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('http://77.37.125.30:5000/api/view-properties');
+        const response = await axios.get('http://localhost:5000/api/view-properties');
         setProperties(response.data);
       } catch (error) {
         console.error('Error fetching properties:', error);
@@ -31,6 +30,30 @@ const ViewProperty = () => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // Toggle property status
+  const toggleStatus = (id, index) => {
+    console.log("Property ID to update:", id);
+    // Create a copy of properties
+    const updatedProperties = [...properties];
+
+    // Toggle the 'sold_out' status
+    updatedProperties[index].sold_out = !updatedProperties[index].sold_out;
+
+    // Update the state with the modified properties array
+    setProperties(updatedProperties);
+
+    // Send a PUT request to update the status in the backend
+    axios.put(`http://localhost:5000/api/properties/${id}`, {
+      sold_out: updatedProperties[index].sold_out
+    })
+      .then(response => {
+        console.log('Property status updated successfully.');
+      })
+      .catch(error => {
+        console.error('Error updating property status:', error);
+      });
+  };
+
   return (
     <div className="view-properties-container">
       <h2 className="featured-heading">Featured Properties</h2>
@@ -40,7 +63,7 @@ const ViewProperty = () => {
             <div key={index} className="property-card">
               <div className="property-image-container">
                 <img
-                  src={`http://77.37.125.30:5000${property.image || '/assets/default-property.jpg'}`}
+                  src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
                   alt={property.name}
                   className="property-image"
                 />
@@ -55,6 +78,11 @@ const ViewProperty = () => {
                 ) : (
                   <p className="available">Available</p>
                 )}
+
+                {/* Change Status Button */}
+                <button className="change-status-btn" onClick={() => toggleStatus(property.id, index)}>
+                  Change Status
+                </button>
               </div>
             </div>
           ))

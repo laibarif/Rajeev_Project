@@ -51,7 +51,7 @@ const ChatWithUs = () => {
         }
 
         if (!mobileError && formData.mobile !== '') {
-            axios.post('http://77.37.125.30:5000/submit-form', formData)
+            axios.post('http://localhost:5000/submit-form', formData)
                 .then(response => {
                     setSuccessMessage('Message Sent successfully');
                     setFormData({ name: '', email: '', mobile: '', comment: '' });
