@@ -7,7 +7,7 @@ import { BACKEND_URL } from "../../utils/constant";
 const ViewProperty = () => {
   const [properties, setProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const propertiesPerPage = 8; // 4 cards per row * 2 rows
+  const propertiesPerPage = 8;
 
   // Fetch properties from the backend
   useEffect(() => {
@@ -34,6 +34,31 @@ const ViewProperty = () => {
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Toggle property status
+  const toggleStatus = (id, index) => {
+    console.log("Property ID to update:", id);
+    // Create a copy of properties
+    const updatedProperties = [...properties];
+
+    // Toggle the 'sold_out' status
+    updatedProperties[index].sold_out = !updatedProperties[index].sold_out;
+
+    // Update the state with the modified properties array
+    setProperties(updatedProperties);
+
+    // Send a PUT request to update the status in the backend
+    axios
+      .put(`http://localhost:5000/api/properties/${id}`, {
+        sold_out: updatedProperties[index].sold_out,
+      })
+      .then((response) => {
+        console.log("Property status updated successfully.");
+      })
+      .catch((error) => {
+        console.error("Error updating property status:", error);
+      });
+  };
 
   return (
     <div className="view-properties-container">
@@ -65,6 +90,14 @@ const ViewProperty = () => {
                 ) : (
                   <p className="available">Available</p>
                 )}
+
+                {/* Change Status Button */}
+                <button
+                  className="change-status-btn"
+                  onClick={() => toggleStatus(property.id, index)}
+                >
+                  Change Status
+                </button>
               </div>
             </div>
           ))

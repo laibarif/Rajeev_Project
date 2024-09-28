@@ -17,10 +17,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // MySQL connection pool
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: "82.197.82.66",
+  user: "u500774472_admin",
+  password: "Admin_password2024",
+  database: "u500774472_blessedbypba",
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
@@ -271,8 +271,40 @@ app.post("/api/enquiries", (req, res) => {
   });
 });
 
+app.put("/api/properties/:id", (req, res) => {
+  const propertyId = req.params.id;
+  const { sold_out } = req.body;
+
+  // Update query for MySQL
+  const query = "UPDATE properties SET sold_out = ? WHERE id = ?";
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      return res.status(500).send("Database connection error");
+    }
+
+    connection.query(query, [sold_out, propertyId], (err, result) => {
+      connection.release();
+
+      if (err) {
+        console.error("Error updating property status:", err);
+        return res
+          .status(500)
+          .json({ error: "Unable to update property status" });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).send("Property not found");
+      }
+
+      res.status(200).json({ message: "Property status updated successfully" });
+    });
+  });
+});
+
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
