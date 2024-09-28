@@ -20,24 +20,23 @@ const Services = () => {
     name: "",
     email: "",
     mobile: "",
-    serviceType: "", // Add serviceType to formData
+    serviceType: "", 
   });
 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [mobileError, setMobileError] = useState("");
-  const [nameError, setNameError] = useState(""); // Add state for name error
+  const [nameError, setNameError] = useState(""); 
   const [showIcons, setShowIcons] = useState(false);
 
-  const { serviceType } = useParams(); // Get serviceType from URL
+  const { serviceType } = useParams(); 
 
-  // useEffect to reset the form when the serviceType changes
   useEffect(() => {
     setFormData({
       name: "",
       email: "",
       mobile: "",
-      serviceType: serviceType, // Reset the serviceType when the URL changes
+      serviceType: serviceType, 
     });
   }, [serviceType]);
 
@@ -60,19 +59,17 @@ const Services = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Validate Name Field: Only letters and spaces are allowed
     if (name === "name") {
       const nameRegex = /^[a-zA-Z\s]*$/;
       if (!nameRegex.test(value)) {
         setNameError("Name can only contain alphabetic characters.");
         setTimeout(() => {
-          setNameError(""); // Clear the error message after 3 seconds
+          setNameError("");
         }, 3000);
-        return; // Stop further execution if validation fails
+        return;
       }
     }
 
-    // Validate Email
     if (name === "email") {
       if (!validateEmail(value)) {
         setErrorMessage("Please enter a valid email address.");
@@ -84,9 +81,8 @@ const Services = () => {
       }
     }
 
-    // Validate Mobile Number: Only digits are allowed
     if (name === "mobile") {
-      const cleanedValue = value.replace(/[^0-9]/g, ""); // Removes non-numeric characters
+      const cleanedValue = value.replace(/[^0-9]/g, "");
       if (value !== cleanedValue) {
         setMobileError("Please enter numbers only.");
         setTimeout(() => {
@@ -95,7 +91,7 @@ const Services = () => {
       } else {
         setMobileError("");
       }
-      setFormData({ ...formData, [name]: cleanedValue }); // Ensure only numbers are set in mobile field
+      setFormData({ ...formData, [name]: cleanedValue });
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -104,16 +100,14 @@ const Services = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if mobile has errors or is empty
     if (mobileError || formData.mobile === "") {
       setMobileError("Please enter a valid mobile number");
       setTimeout(() => {
-        setMobileError(""); // Clear the error message after 3 seconds
+        setMobileError("");
       }, 3000);
       return;
     }
 
-    // Email validation
     if (!validateEmail(formData.email)) {
       setErrorMessage("Please enter a valid email address.");
       setTimeout(() => {
@@ -122,7 +116,6 @@ const Services = () => {
       return;
     }
 
-    // Submit the form
     const formWithServiceType = { ...formData, serviceType };
 
     axios
@@ -133,7 +126,7 @@ const Services = () => {
           name: "",
           email: "",
           mobile: "",
-          serviceType: serviceType, // Keep the current serviceType
+          serviceType: serviceType, 
         });
         setTimeout(() => {
           setSuccessMessage(false);
@@ -142,7 +135,7 @@ const Services = () => {
       .catch((error) => {
         console.error("Error submitting form:", error);
         setTimeout(() => {
-          setNameError(""); // Clear the error message after 3 seconds
+          setNameError(""); 
         }, 3000);
       });
   };
@@ -154,10 +147,7 @@ const Services = () => {
   const shareUrl = "https://propertybuyersaustraliagroup.com.au/landing-page/";
 
   const shareOnWhatsApp = () => {
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareUrl)}`, "_blank");
   };
 
   const shareOnFacebook = () => {
@@ -296,19 +286,13 @@ const Services = () => {
 
             {showIcons && (
               <div className="social-icons-container">
-                <FaWhatsapp className="social-icon" onClick={shareOnWhatsApp} />
-                <FaFacebook className="social-icon" onClick={shareOnFacebook} />
-                <FaEnvelope className="social-icon" onClick={shareOnEmail} />
-                <FaInstagram
-                  className="social-icon"
-                  onClick={shareOnInstagram}
-                />
-                <FaLinkedin className="social-icon" onClick={shareOnLinkedIn} />
-                <FaTwitter className="social-icon" onClick={shareOnTwitter} />
-                <FaTimes
-                  className="social-icon close-icon"
-                  onClick={toggleIcons}
-                />
+                <FaWhatsapp className="social-icon whatsapp" onClick={shareOnWhatsApp} />
+                <FaFacebook className="social-icon facebook" onClick={shareOnFacebook} />
+                <FaEnvelope className="social-icon envelope" onClick={shareOnEmail} />
+                <FaInstagram className="social-icon instagram" onClick={shareOnInstagram} />
+                <FaLinkedin className="social-icon linkedin" onClick={shareOnLinkedIn} />
+                <FaTwitter className="social-icon twitter" onClick={shareOnTwitter} />
+                <FaTimes className="social-icon close-icon" onClick={toggleIcons} />
               </div>
             )}
           </div>

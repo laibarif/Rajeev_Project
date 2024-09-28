@@ -29,11 +29,9 @@ const EnquiryPage = () => {
   const [validationError, setValidationError] = useState("");
   const [showIcons, setShowIcons] = useState(false); // State to toggle the social media icons
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Check for mobile number input to ensure it's numeric and limit it to 10 digits
     if (name === "mobile") {
       if (!/^\d*$/.test(value)) {
         setValidationError("Mobile number should contain only digits.");
@@ -47,12 +45,10 @@ const EnquiryPage = () => {
       }, 3000);
     }
 
-    // Name validation: Ensure no digits are entered
     if (name === "name") {
-      const nameRegex = /^[a-zA-Z\s]*$/; // Only letters and spaces allowed
+      const nameRegex = /^[a-zA-Z\s]*$/;
       if (!nameRegex.test(value)) {
         setValidationError("Name can only contain alphabetic characters.");
-        // Auto-hide the error message after 3 seconds
         setTimeout(() => {
           setValidationError("");
         }, 3000);
@@ -67,20 +63,16 @@ const EnquiryPage = () => {
     setValidationError(""); // Clear validation error
   };
 
-  // Auto-hide messages after 3 seconds
   useEffect(() => {
     if (successMessage || errorMessage) {
       const timer = setTimeout(() => {
         setSuccessMessage("");
         setErrorMessage("");
       }, 3000);
-
-      // Cleanup timeout
       return () => clearTimeout(timer);
     }
   }, [successMessage, errorMessage]);
 
-  // Validate email format (Check if email contains '@' and a '.' before the last two or three characters)
   const validateEmail = (email) => {
     const emailParts = email.split("@");
     if (
@@ -88,23 +80,21 @@ const EnquiryPage = () => {
       !emailParts[1].includes(".") ||
       emailParts[1].split(".").length < 2
     ) {
-      return false; // Email is invalid
+      return false;
     }
     const domainParts = emailParts[1].split(".");
     if (
       domainParts[domainParts.length - 1].length < 2 ||
       domainParts[domainParts.length - 1].length > 3
     ) {
-      return false; // The part after the last dot should have 2 or 3 characters (like .com or .org)
+      return false;
     }
-    return true; // Email is valid
+    return true;
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Email validation
     if (!validateEmail(formData.email)) {
       setValidationError("Please enter a valid email address.");
       return;
@@ -112,9 +102,9 @@ const EnquiryPage = () => {
 
     try {
       const response = await axios.post(`${BACKEND_URL}/api/enquiries`, {
-        propertyId: id, // Include property ID
-        propertyName: name, // Include property name
-        ...formData, // Include form data
+        propertyId: id,
+        propertyName: name,
+        ...formData,
       });
 
       if (response.status === 200) {
@@ -140,12 +130,11 @@ const EnquiryPage = () => {
   };
 
   const toggleIcons = () => {
-    setShowIcons(!showIcons); // Toggle the visibility of the icons
+    setShowIcons(!showIcons);
   };
 
   const shareUrl = "https://propertybuyersaustraliagroup.com.au/landing-page/";
 
-  // Social media share functions
   const shareOnWhatsApp = () => {
     window.open(
       `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
@@ -195,12 +184,10 @@ const EnquiryPage = () => {
     <div className="market-property-container">
       <div className="market-property-form">
         <div className="form-content">
-          {/* Image on the left */}
           <div className="form-image">
             <img src={image} alt="Property" />
           </div>
 
-          {/* Form Fields */}
           <div className="form-fields">
             <h2>Enquiry for {name}</h2>
             {successMessage && (
@@ -246,7 +233,7 @@ const EnquiryPage = () => {
                   value={formData.mobile}
                   onChange={handleChange}
                   required
-                  maxLength="10" // Limit to 10 digits
+                  maxLength="10"
                 />
               </div>
               <div className="form-buttons">
@@ -265,7 +252,6 @@ const EnquiryPage = () => {
           </div>
         </div>
 
-        {/* Additional buttons below the form */}
         <div className="additional-buttons">
           <div
             className="action-btn-container"
@@ -275,18 +261,32 @@ const EnquiryPage = () => {
               Refer Us
             </button>
 
-            {/* Social Media Icons - Positioned close to the Refer Us button */}
             {showIcons && (
               <div className="social-icons-container">
-                <FaWhatsapp className="social-icon" onClick={shareOnWhatsApp} />
-                <FaFacebook className="social-icon" onClick={shareOnFacebook} />
-                <FaEnvelope className="social-icon" onClick={shareOnEmail} />
+                <FaWhatsapp
+                  className="social-icon fa-whatsapp"
+                  onClick={shareOnWhatsApp}
+                />
+                <FaFacebook
+                  className="social-icon fa-facebook"
+                  onClick={shareOnFacebook}
+                />
+                <FaEnvelope
+                  className="social-icon fa-envelope"
+                  onClick={shareOnEmail}
+                />
                 <FaInstagram
-                  className="social-icon"
+                  className="social-icon fa-instagram"
                   onClick={shareOnInstagram}
                 />
-                <FaLinkedin className="social-icon" onClick={shareOnLinkedIn} />
-                <FaTwitter className="social-icon" onClick={shareOnTwitter} />
+                <FaLinkedin
+                  className="social-icon fa-linkedin"
+                  onClick={shareOnLinkedIn}
+                />
+                <FaTwitter
+                  className="social-icon fa-twitter"
+                  onClick={shareOnTwitter}
+                />
                 <FaTimes
                   className="social-icon close-icon"
                   onClick={toggleIcons}

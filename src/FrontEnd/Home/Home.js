@@ -41,6 +41,13 @@ const Home = () => {
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const goToNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+  const goToPreviousPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
   const toggleIcons = () => {
     setShowIcons(!showIcons); // Toggle the visibility of the icons
     console.log("Icons visibility state:", showIcons);
@@ -140,6 +147,14 @@ const Home = () => {
 
       {/* Pagination */}
       <div className="pagination">
+        <button
+          className="pagination-btn"
+          onClick={goToPreviousPage}
+          disabled={currentPage === 1} // Disable if on the first page
+        >
+          &lt; Prev
+        </button>
+
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
@@ -151,6 +166,14 @@ const Home = () => {
             {index + 1}
           </button>
         ))}
+
+        <button
+          className="pagination-btn"
+          onClick={goToNextPage}
+          disabled={currentPage === totalPages} // Disable if on the last page
+        >
+          Next &gt;
+        </button>
       </div>
 
       <div className="additional-buttons">
@@ -163,24 +186,24 @@ const Home = () => {
           {showIcons && (
             <div className="home-social-icons-container">
               <FaWhatsapp
-                className="home-social-icon"
+                className="home-social-icon fa-whatsapp"
                 onClick={shareOnWhatsApp}
               />
               <FaFacebook
-                className="home-social-icon"
+                className="home-social-icon fa-facebook"
                 onClick={shareOnFacebook}
               />
-              <FaEnvelope className="home-social-icon" onClick={shareOnEmail} />
+              <FaEnvelope className="home-social-icon fa-envelope" onClick={shareOnEmail} />
               <FaInstagram
-                className="home-social-icon"
+                className="home-social-icon fa-instagram"
                 onClick={shareOnInstagram}
               />
               <FaLinkedin
-                className="home-social-icon"
+                className="home-social-icon fa-linkedin"
                 onClick={shareOnLinkedIn}
               />
               <FaTwitter
-                className="home-social-icon"
+                className="home-social-icon fa-twitter"
                 onClick={shareOnTwitter}
               />
               <FaTimes
@@ -190,7 +213,7 @@ const Home = () => {
             </div>
           )}
         </div>
-        <div className="action-btn-container" >
+        <div className="action-btn-container">
           <div className="action-btn">
             <Link to="/social-media-reach">Follow Us</Link>
           </div>

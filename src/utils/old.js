@@ -65,9 +65,9 @@ app.post("/submit-form", (req, res) => {
 
 // API to handle property submission
 app.post("/submit-property", (req, res) => {
-  const { name, email, mobile, address } = req.body;
+  const { name, email, mobile, comment, address } = req.body;
   const query =
-    "INSERT INTO market_property (name, email, mobile,comment, address) VALUES (?, ?, ?, ?)";
+    "INSERT INTO market_property (name, email, mobile, comment, address) VALUES (?, ?, ?, ?, ?)";
 
   pool.getConnection((err, connection) => {
     if (err) {
@@ -75,11 +75,11 @@ app.post("/submit-property", (req, res) => {
       return res.status(500).send("Database connection error");
     }
 
-    connection.query(query, [name, email, mobile, address], (err, result) => {
+    connection.query(query, [name, email, mobile, comment, address], (err, result) => {
       connection.release();
 
       if (err) {
-        console.error("Error inserting data:", err);
+        console.error("Error inserting data:", err); // Log the full error
         res.status(500).send("Error storing data");
       } else {
         res.status(200).send("Data stored successfully");
@@ -87,6 +87,7 @@ app.post("/submit-property", (req, res) => {
     });
   });
 });
+
 
 // API to handle other services form submission
 app.post("/other-services", (req, res) => {

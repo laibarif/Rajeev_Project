@@ -24,7 +24,7 @@ const ChatWithUs = () => {
 
   const [mobileError, setMobileError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [nameError, setNameError] = useState(""); // Added state for name error
+  const [nameError, setNameError] = useState(""); 
   const [commentError, setCommentError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [showIcons, setShowIcons] = useState(false);
@@ -32,18 +32,16 @@ const ChatWithUs = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    // Validation for name: Only alphabetic characters allowed
     if (name === "name") {
-      const cleanedValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove any non-alphabet characters
+      const cleanedValue = value.replace(/[^a-zA-Z\s]/g, "");
       if (value !== cleanedValue) {
         setNameError("Name can only contain alphabetic characters.");
         setTimeout(() => {
-          setNameError(""); // Hide error after 3 seconds
+          setNameError("");
         }, 3000);
       }
       setFormData({ ...formData, [name]: cleanedValue });
     }
-    // Validation for mobile number: Only numeric values allowed
     else if (name === "mobile") {
       const cleanedValue = value.replace(/[^0-9]/g, "");
       setMobileError(value !== cleanedValue ? "Please enter numbers only" : "");
@@ -57,7 +55,6 @@ const ChatWithUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Email validation: Check if email contains '@' and '.' before last part
     const emailParts = formData.email.split("@");
     if (
       emailParts.length !== 2 ||
@@ -71,10 +68,9 @@ const ChatWithUs = () => {
       setEmailError("");
     }
 
-    // Check if comment is provided
     if (formData.comment.trim() === "") {
       setCommentError("Please enter a comment.");
-      setTimeout(() => setCommentError(""), 3000); // Remove the message after 3 seconds
+      setTimeout(() => setCommentError(""), 3000);
       return;
     }
 
@@ -93,17 +89,13 @@ const ChatWithUs = () => {
   };
 
   const toggleIcons = () => {
-    setShowIcons(!showIcons); // Toggle the visibility of the icons
+    setShowIcons(!showIcons);
   };
 
   const shareUrl = "https://propertybuyersaustraliagroup.com.au/landing-page/";
 
-  // Social media share functions
   const shareOnWhatsApp = () => {
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(shareUrl)}`,
-      "_blank"
-    );
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareUrl)}`, "_blank");
   };
 
   const shareOnFacebook = () => {
@@ -231,22 +223,15 @@ const ChatWithUs = () => {
               Refer Us
             </button>
 
-            {/* Social Media Icons */}
             {showIcons && (
               <div className="social-icons-container">
-                <FaWhatsapp className="social-icon" onClick={shareOnWhatsApp} />
-                <FaFacebook className="social-icon" onClick={shareOnFacebook} />
-                <FaEnvelope className="social-icon" onClick={shareOnEmail} />
-                <FaInstagram
-                  className="social-icon"
-                  onClick={shareOnInstagram}
-                />
-                <FaLinkedin className="social-icon" onClick={shareOnLinkedIn} />
-                <FaTwitter className="social-icon" onClick={shareOnTwitter} />
-                <FaTimes
-                  className="social-icon close-icon"
-                  onClick={toggleIcons}
-                />
+                <FaWhatsapp className="social-icon whatsapp" onClick={shareOnWhatsApp} />
+                <FaFacebook className="social-icon facebook" onClick={shareOnFacebook} />
+                <FaEnvelope className="social-icon envelope" onClick={shareOnEmail} />
+                <FaInstagram className="social-icon instagram" onClick={shareOnInstagram} />
+                <FaLinkedin className="social-icon linkedin" onClick={shareOnLinkedIn} />
+                <FaTwitter className="social-icon twitter" onClick={shareOnTwitter} />
+                <FaTimes className="social-icon close-icon" onClick={toggleIcons} />
               </div>
             )}
           </div>

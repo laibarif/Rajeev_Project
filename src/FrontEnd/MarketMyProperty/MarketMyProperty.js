@@ -98,7 +98,7 @@ const MarketMyProperty = () => {
     setErrorMessage("");
 
     axios
-      .post(`${BACKEND_URL}/api/submit-property`, formData)
+      .post(`${BACKEND_URL}/submit-property`, formData)
       .then((response) => {
         // Show success message
         setSuccessMessage(true);
@@ -276,19 +276,13 @@ const MarketMyProperty = () => {
             {/* Social Media Icons - Positioned close to the Refer Us button */}
             {showIcons && (
               <div className="social-icons-container">
-                <FaWhatsapp className="social-icon" onClick={shareOnWhatsApp} />
-                <FaFacebook className="social-icon" onClick={shareOnFacebook} />
-                <FaEnvelope className="social-icon" onClick={shareOnEmail} />
-                <FaInstagram
-                  className="social-icon"
-                  onClick={shareOnInstagram}
-                />
-                <FaLinkedin className="social-icon" onClick={shareOnLinkedIn} />
-                <FaTwitter className="social-icon" onClick={shareOnTwitter} />
-                <FaTimes
-                  className="social-icon close-icon"
-                  onClick={toggleIcons}
-                />
+                <FaWhatsapp className="social-icon fa-whatsapp" onClick={shareOnWhatsApp} />
+                <FaFacebook className="social-icon fa-facebook" onClick={shareOnFacebook} />
+                <FaEnvelope className="social-icon fa-envelope" onClick={shareOnEmail} />
+                <FaInstagram className="social-icon fa-instagram" onClick={shareOnInstagram} />
+                <FaLinkedin className="social-icon fa-linkedin" onClick={shareOnLinkedIn} />
+                <FaTwitter className="social-icon fa-twitter" onClick={shareOnTwitter} />
+                <FaTimes className="social-icon close-icon" onClick={toggleIcons} />
               </div>
             )}
           </div>

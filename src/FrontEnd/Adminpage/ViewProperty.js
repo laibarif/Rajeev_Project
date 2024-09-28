@@ -33,11 +33,14 @@ const ViewProperty = () => {
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
 
   // Toggle property status
   const toggleStatus = (id, index) => {
-    console.log("Property ID to update:", id);
     const updatedProperties = [...properties];
     updatedProperties[index].sold_out = !updatedProperties[index].sold_out;
     setProperties(updatedProperties);
@@ -64,8 +67,6 @@ const ViewProperty = () => {
         .delete(`${BACKEND_URL}/api/properties/${id}`)
         .then((response) => {
           console.log("Property deleted successfully.");
-
-          // Update state to remove the deleted property from the list
           const updatedProperties = properties.filter(
             (_, propertyIndex) => propertyIndex !== index
           );
@@ -141,6 +142,16 @@ const ViewProperty = () => {
 
       {/* Pagination */}
       <div className="pagination">
+        {/* Previous Button */}
+        <button
+          className="pagination-btn prev-btn"
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &lt; Prev
+        </button>
+
+        {/* Page Numbers */}
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
@@ -152,6 +163,15 @@ const ViewProperty = () => {
             {index + 1}
           </button>
         ))}
+
+        {/* Next Button */}
+        <button
+          className="pagination-btn next-btn"
+          onClick={() => paginate(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next &gt;
+        </button>
       </div>
     </div>
   );

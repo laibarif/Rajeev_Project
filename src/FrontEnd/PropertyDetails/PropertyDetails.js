@@ -44,10 +44,7 @@ const PropertyDetails = () => {
   };
 
   const toggleIcons = () => {
-    console.log("BUtton CLIked");
-
     setShowIcons(!showIcons); // Toggle the visibility of the icons
-    console.log("Icons visibility state:", showIcons);
   };
 
   const shareUrl = "https://propertybuyersaustraliagroup.com.au/landing-page/";
@@ -105,7 +102,7 @@ const PropertyDetails = () => {
           key={property.id}
           className={`property-card ${
             property.sold_out ? "sold-out-card" : ""
-          }`} // Conditional class for sold out properties
+          }`}
         >
           <div className="property-image-container">
             <img
@@ -133,7 +130,6 @@ const PropertyDetails = () => {
           </div>
         </div>
       </div>
-      {/* Aligning buttons vertically on the right */}
       <div className="property-actions">
         <button className="property-action-btn" onClick={handleEnquire}>
           Enquire
@@ -148,27 +144,27 @@ const PropertyDetails = () => {
           {showIcons && (
             <div className="property-social-icons-container">
               <FaWhatsapp
-                className="property-social-icon"
+                className="property-social-icon fa-whatsapp"
                 onClick={shareOnWhatsApp}
               />
               <FaFacebook
-                className="property-social-icon"
+                className="property-social-icon fa-facebook"
                 onClick={shareOnFacebook}
               />
               <FaEnvelope
-                className="property-social-icon"
+                className="property-social-icon fa-envelope"
                 onClick={shareOnEmail}
               />
               <FaInstagram
-                className="property-social-icon"
+                className="property-social-icon fa-instagram"
                 onClick={shareOnInstagram}
               />
               <FaLinkedin
-                className="property-social-icon"
+                className="property-social-icon fa-linkedin"
                 onClick={shareOnLinkedIn}
               />
               <FaTwitter
-                className="property-social-icon"
+                className="property-social-icon fa-twitter"
                 onClick={shareOnTwitter}
               />
               <FaTimes

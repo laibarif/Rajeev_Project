@@ -31,7 +31,7 @@
   border-radius: 5px;
 }
 
-.property-content{
+.property-content {
   text-align: center;
 }
 
@@ -43,67 +43,82 @@
 /* Property actions container */
 .property-actions {
   display: flex;
-  flex-direction: column; /* Align buttons vertically */
-  justify-content: flex-start; /* Align buttons at the top */
-  align-items: flex-end; /* Push buttons to the right */
-  gap: 15px; /* Add space between buttons */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 15px;
   padding: 10px;
   min-width: 150px;
-  position: relative; /* Needed to align social icons properly */
+  position: relative;
 }
 
-/* Property action buttons - consistent width and padding */
+/* Property action buttons */
 .property-action-btn {
   background-color: #A93339;
   color: white;
-  padding: 10px 30px; /* Consistent padding for all buttons */
+  padding: 10px 30px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  width: 100%; /* Full width for all buttons */
-  box-sizing: border-box; /* Ensure padding is included in button width */
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
 }
 
-/* Make sure "Refer Us" button doesn't expand */
 .refer-btn {
-  padding: 10px 30px; 
-  width: 100%; 
-  box-sizing: border-box; 
+  padding: 10px 30px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Social media icons to be shown on the right of the "Refer Us" button for large screens */
+/* Social media icons container */
 .property-social-icons-container {
   position: absolute;
-  top: -200px; /* Adjust vertical positioning */
-  right: -60px; /* Align to the right of the Refer Us button */
+  top: -210px;
+  right: -50px;
   display: flex;
   flex-direction: column;
   z-index: 9999;
   visibility: visible;
 }
 
-/* Fix button expansion issue */
-.property-action-btn:focus {
-  outline: none;
-  width: 100%; /* Keep width fixed */
-  height: auto; /* Prevent height expansion */
-}
-
-/* For smaller screens - adjust icon sizes */
+/* Social media icons styling */
 .property-social-icon {
   margin: 7px 7px;
-  font-size: 1.9rem;
-  color: #d68d91;
+  font-size: 2.0rem;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.property-social-icon:hover {
-  color: #d68d91;
+.property-social-icon.fa-whatsapp {
+  color: #25D366; /* WhatsApp green */
 }
 
-/* Close icon styling */
+.property-social-icon.fa-facebook {
+  color: #3b5998; /* Facebook blue */
+}
+
+.property-social-icon.fa-envelope {
+  color: #D44638; /* Gmail red */
+}
+
+.property-social-icon.fa-instagram {
+  color: #C13584; /* Instagram pink/purple */
+}
+
+.property-social-icon.fa-linkedin {
+  color: #0077B5; /* LinkedIn blue */
+}
+
+.property-social-icon.fa-twitter {
+  color: #1DA1F2; /* Twitter blue */
+}
+
+.property-social-icon:hover {
+  opacity: 0.7; /* Fade on hover */
+}
+
+/* Close icon */
 .close-icon {
   color: red;
 }
@@ -112,7 +127,7 @@
 @media (max-width: 768px) {
   .property-detail-card {
     margin-left: 0;
-    width: 100%; /* Ensure the card takes up full width */
+    width: 100%;
     max-width: 100%;
   }
 
@@ -122,23 +137,23 @@
   }
 
   .property-actions {
-    align-items: center; /* Center align buttons on smaller screens */
-    width: 100%; /* Ensure the buttons take up full width */
+    align-items: center;
+    width: 100%;
   }
 
   .property-action-btn {
-    width: 80%; /* Make the button smaller in width on smaller screens */
-    padding: 10px; /* Adjust padding for smaller screens */
+    width: 80%;
+    padding: 10px;
     z-index: 1;
   }
 
-  /* Adjust social media icons to display horizontally on small screens */
+  /* Social media icons */
   .property-social-icons-container {
     position: relative;
-    flex-direction: row; /* Change to horizontal layout */
-    right: 0; /* Align below the buttons */
-    top: 5px !important; /* Adjust vertical positioning */
-    justify-content: center; /* Center align icons */
+    flex-direction: row;
+    right: 0;
+    top: 5px !important;
+    justify-content: center;
     width: 100%;
     z-index: 9999;
   }
@@ -146,41 +161,28 @@
   .property-social-icon {
     font-size: 1.3rem;
   }
-
-  /* Ensure the Refer Us button does not overlap */
-  .property-action-btn.refer-btn {
-    position: relative;
-    z-index: 2;
-  }
 }
 
 @media (max-width: 480px) {
   .property-actions {
-    width: 100%; /* Ensure buttons take up full width */
+    width: 100%;
     align-items: center;
   }
 
   .property-action-btn {
-    width: 100%; /* Full width for small screens */
-    padding: 10px 20px; /* Adjust padding */
+    width: 100%;
+    padding: 10px 20px;
     z-index: 2;
   }
 
-  /* Keep social media icons below buttons and horizontally aligned */
   .property-social-icons-container {
     right: 0;
     top: 30px;
     flex-direction: row;
-    justify-content: center; /* Center the icons */
+    justify-content: center;
   }
 
   .property-social-icon {
     font-size: 1.3rem;
-  }
-
-  /* Ensure no overlap on small screens */
-  .property-action-btn.refer-btn {
-    position: relative;
-    z-index: 2;
   }
 }
