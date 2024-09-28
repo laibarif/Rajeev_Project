@@ -13,6 +13,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const options = {
+  key: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/fullchain.pem'),
+};
+
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // MySQL connection pool
@@ -334,3 +340,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// https.createServer(options, app).listen(443, () => {
+//   console.log('HTTPS Server running on port 443');
+// });
