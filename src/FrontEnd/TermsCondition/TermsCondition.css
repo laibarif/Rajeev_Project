@@ -1,0 +1,90 @@
+/* Container for the terms and conditions content */
+.terms-conditions-container {
+    max-width: 900px;
+    margin: 40px auto; /* Center the container */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: left;
+  }
+  
+  /* Heading for the page */
+  .terms-conditions-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #A93339;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  /* Breadcrumb */
+  .terms-conditions-breadcrumb {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Content styling */
+  .terms-conditions-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    padding: 10px 0;
+  }
+  
+  /* Section headings inside the terms */
+  .terms-conditions-content h2 {
+    font-size: 1.5rem;
+    color: #A93339;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Unordered list styling */
+  .terms-conditions-content ul {
+    margin: 10px 0 20px 20px;
+    list-style: disc;
+  }
+  
+  .terms-conditions-content ul li {
+    margin-bottom: 8px;
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .terms-conditions-container {
+      padding: 15px;
+    }
+  
+    .terms-conditions-heading {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+  
+    .terms-conditions-content {
+      font-size: 1rem;
+    }
+  
+    .terms-conditions-content h2 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .terms-conditions-heading {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+  
+    .terms-conditions-content {
+      font-size: 0.9rem;
+    }
+  
+    .terms-conditions-content h2 {
+      font-size: 1.2rem;
+    }
+  }
+  

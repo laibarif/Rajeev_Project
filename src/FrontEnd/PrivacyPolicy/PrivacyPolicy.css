@@ -1,0 +1,120 @@
+/* Container for the privacy policy content */
+.privacy-policy-container {
+  max-width: 900px;
+  margin: 40px auto; /* Center the container on the page */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  text-align: left; /* Ensure all text is left-aligned */
+}
+
+/* Heading for the page */
+.privacy-policy-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #A93339;
+  text-align: center; /* Center only the heading */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Breadcrumb navigation */
+.privacy-policy-breadcrumb {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: left; /* Breadcrumb remains left-aligned */
+}
+
+/* Main content */
+.privacy-policy-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333; /* Slightly darker color for readability */
+  text-align: left; /* Ensure all text is left-aligned */
+  padding: 10px 0;
+}
+
+/* Headings for sections within the policy */
+.privacy-policy-content h2 {
+  font-size: 1.5rem;
+  color: #A93339;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left; /* Left-align section headings */
+}
+
+/* Unordered lists inside the content */
+.privacy-policy-content ul {
+  margin: 10px 0 20px 20px;
+  list-style: disc;
+}
+
+.privacy-policy-content ul li {
+  margin-bottom: 8px;
+}
+
+/* Disclaimer or important notes */
+.disclaimer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-left: 5px solid #A93339;
+  font-style: italic;
+  color: #666;
+}
+
+.privacy-policy-content a {
+  color: #A93339; /* Match the heading color */
+  text-decoration: underline;
+}
+
+.privacy-policy-content a:hover {
+  text-decoration: none; /* Remove underline on hover */
+  color: #d9534f; /* Change the color on hover */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+  .privacy-policy-container {
+    padding: 15px;
+  }
+
+  .privacy-policy-heading {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .privacy-policy-content {
+    font-size: 1rem;
+  }
+
+  .privacy-policy-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .disclaimer {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-policy-heading {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  .privacy-policy-content {
+    font-size: 0.9rem;
+  }
+
+  .privacy-policy-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+  }
+}

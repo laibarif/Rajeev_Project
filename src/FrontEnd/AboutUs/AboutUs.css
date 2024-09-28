@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 120vh;
+  min-height: 100vh; /* Adjusted for better height control */
   background-color: #f4f4f4;
   text-align: center;
   padding: 10px;
@@ -11,37 +11,38 @@
 
 .heading {
   color: #A93339;
-  font-size: 2.0rem;
+  font-size: 2rem;
   font-weight: bold;
-  /* margin-bottom: 2px; */
   letter-spacing: 1px;
-  text-transform: uppercase; /* Adds a professional touch */
+  text-transform: uppercase;
 }
 
 .about-text {
   font-size: 1.2rem;
   color: #333;
-  line-height: 1.8; /* Better spacing between lines */
+  line-height: 1.8;
   margin-top: 10px;
   margin-bottom: 30px;
-  max-width: 800px; /* Limit text width for readability */
-  padding: 20px; /* Adds padding inside the text box */
-  background-color: #fff; /* Adds a white background for contrast */
-  border-radius: 10px; /* Rounds the corners of the background */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
-  text-align: left; /* Align text to left */
-  word-spacing: 0.05rem; /* Adds slight word spacing for readability */
+  max-width: 800px; /* Kept for larger screens */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  word-spacing: 0.05rem;
 }
 
 .about-text span {
   color: #A93339;
-  font-weight: bold; /* Highlights important text */
+  font-weight: bold;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
 .button {
@@ -59,47 +60,85 @@
   background-color: #d68d91;
 }
 
+/* Social media icons container for responsiveness */
+.social-media-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Ensures icons wrap on smaller screens */
+}
+
+.social-media-icons a {
+  color: #A93339;
+  transition: color 0.3s ease;
+}
+
+.social-media-icons a:hover {
+  color: #d68d91;
+}
+
 /* Media Query for Tablets and Smaller Screens */
 @media (max-width: 768px) {
   .heading {
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Slightly smaller heading */
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    max-width: 100%; /* Use full width on smaller screens */
+    padding: 15px;
   }
 
   .button-container {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px; /* Reduced gap between buttons */
   }
 
   .button {
     width: 100%;
-    padding: 12px 25px;
-    font-size: 1.1rem;
+    padding: 12px 20px;
+    font-size: 1rem; /* Adjust button size */
   }
 
-  .about-text {
-    font-size: 1.2rem;
-    padding: 15px;
+  .social-media-icons a {
+    font-size: 30px; /* Smaller social media icons for tablets */
   }
 }
 
 /* Media Query for Mobile Screens */
 @media (max-width: 480px) {
   .heading {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-
-  .button-container {
-    gap: 10px;
-  }
-
-  .button {
-    padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.4rem; /* Smaller heading */
+    margin-bottom: 15px;
   }
 
   .about-text {
-    font-size: 1.1rem;
-    padding: 15px;
+    font-size: 1rem; /* Reduced font size */
+    padding: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6; /* Better line height for readability */
+  }
+
+  .button-container {
+    gap: 5px !important; /* Reduced gap between buttons */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    padding: 10px 15px;
+    font-size: 0.9rem; /* Smaller button font size */
+    margin: 5px 0; /* Reduced margin between buttons */
+    width: 100%; /* Ensure buttons take full width */
+    max-width: 300px; /* Optional: Limit the button width */
+  }
+
+  .social-media-icons a {
+    font-size: 28px; /* Smaller icons for mobile */
+  }
+
+  .container {
+    padding: 10px; /* Extra padding on smaller screens */
   }
 }

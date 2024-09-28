@@ -98,7 +98,7 @@ const MarketMyProperty = () => {
     setErrorMessage("");
 
     axios
-      .post(`${BACKEND_URL}/submit-property`, formData)
+      .post(`${BACKEND_URL}/api/submit-property`, formData)
       .then((response) => {
         // Show success message
         setSuccessMessage(true);

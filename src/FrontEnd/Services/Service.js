@@ -141,6 +141,9 @@ const Services = () => {
       })
       .catch((error) => {
         console.error("Error submitting form:", error);
+        setTimeout(() => {
+          setNameError(""); // Clear the error message after 3 seconds
+        }, 3000);
       });
   };
 

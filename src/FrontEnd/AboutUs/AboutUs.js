@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AboutUs.css'; // Import the CSS file
 import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
@@ -29,16 +30,17 @@ const AboutUs = () => {
       </p>
 
       <div className="button-container">
-        <button
-          className="button"
-          onClick={() => redirectToExternalPage('https://propertybuyersaustraliagroup.com.au/privacy%20-policy/')}>
-          Privacy Policy
-        </button>
-        <button
-          className="button"
-          onClick={() => redirectToExternalPage('https://propertybuyersaustraliagroup.com.au/terms-conditions/')}>
-          Terms and Conditions
-        </button>
+        <Link to="/privacy-policy">
+          <button className="button">
+            Privacy Policy
+          </button>
+        </Link>
+
+        <Link to="/terms-condition">
+          <button className="button">
+            Terms and Conditions
+          </button>
+        </Link>
       </div>
     </div>
   );

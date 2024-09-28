@@ -24,17 +24,32 @@ const ChatWithUs = () => {
 
   const [mobileError, setMobileError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [commentError, setCommentError] = useState(""); // Added state for comment error
+  const [nameError, setNameError] = useState(""); // Added state for name error
+  const [commentError, setCommentError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [showIcons, setShowIcons] = useState(false); // State to toggle the social media icons
+  const [showIcons, setShowIcons] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === "mobile") {
+    
+    // Validation for name: Only alphabetic characters allowed
+    if (name === "name") {
+      const cleanedValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove any non-alphabet characters
+      if (value !== cleanedValue) {
+        setNameError("Name can only contain alphabetic characters.");
+        setTimeout(() => {
+          setNameError(""); // Hide error after 3 seconds
+        }, 3000);
+      }
+      setFormData({ ...formData, [name]: cleanedValue });
+    }
+    // Validation for mobile number: Only numeric values allowed
+    else if (name === "mobile") {
       const cleanedValue = value.replace(/[^0-9]/g, "");
       setMobileError(value !== cleanedValue ? "Please enter numbers only" : "");
       setFormData({ ...formData, [name]: cleanedValue });
-    } else {
+    } 
+    else {
       setFormData({ ...formData, [name]: value });
     }
   };
@@ -58,8 +73,8 @@ const ChatWithUs = () => {
 
     // Check if comment is provided
     if (formData.comment.trim() === "") {
-      setCommentError("Please enter a comment."); // Set comment error message
-      setTimeout(() => setCommentError(""), 5000); // Remove the message after 5 seconds
+      setCommentError("Please enter a comment.");
+      setTimeout(() => setCommentError(""), 3000); // Remove the message after 3 seconds
       return;
     }
 
@@ -148,6 +163,7 @@ const ChatWithUs = () => {
                 placeholder="Name"
                 required
               />
+              {nameError && <p style={{ color: "red" }}>{nameError}</p>}
             </div>
             <div className="form-group">
               <input
@@ -182,8 +198,7 @@ const ChatWithUs = () => {
                 style={{ resize: "vertical" }}
                 required
               ></textarea>
-              {commentError && <p style={{ color: "red" }}>{commentError}</p>}{" "}
-              {/* Display comment error */}
+              {commentError && <p style={{ color: "red" }}>{commentError}</p>}
             </div>
             <div className="form-buttons">
               <button
@@ -216,7 +231,7 @@ const ChatWithUs = () => {
               Refer Us
             </button>
 
-            {/* Social Media Icons - Positioned close to the Refer Us button */}
+            {/* Social Media Icons */}
             {showIcons && (
               <div className="social-icons-container">
                 <FaWhatsapp className="social-icon" onClick={shareOnWhatsApp} />

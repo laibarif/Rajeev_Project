@@ -17,19 +17,46 @@ const AddProperty = () => {
   const [priceError, setPriceError] = useState(""); // Error message for price field
   const [nameError, setNameError] = useState(""); // Error message for name field
   const [fieldError, setFieldError] = useState(""); // General error for required fields
+  const [sizeError, setSizeError] = useState(""); // Error message for invalid image size
   const [successMessage, setSuccessMessage] = useState(""); // Success message
   const [errorMessage, setErrorMessage] = useState(""); // Error message
 
+  // Function to handle changes in form fields
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
 
     if (type === "checkbox") {
       setFormData({ ...formData, [name]: checked });
     } else if (type === "file") {
-      setFormData({ ...formData, [name]: files[0] });
+      const file = files[0];
+      if (file) {
+        const img = new Image();
+        const objectUrl = URL.createObjectURL(file);
+
+        img.onload = () => {
+          const { width, height } = img;
+
+          // Check if the image size is valid (1236x808 or 1138x732)
+          if (
+            (width === 1236 && height === 808) ||
+            (width === 1138 && height === 732)
+          ) {
+            setFormData({ ...formData, [name]: file });
+          } else {
+            setSizeError(
+              "Invalid image size. Allowed sizes are 1236x808 or 1138x732 pixels."
+            );
+            setTimeout(() => {
+              setSizeError(""); // Clear error after 3 seconds
+            }, 3000);
+          }
+          URL.revokeObjectURL(objectUrl); // Clean up the object URL
+        };
+
+        img.src = objectUrl; // Trigger the loading of the image
+      }
     } else {
       if (name === "name") {
-        // Only alphabetic characters allowed in the name field
         const nameRegex = /^[a-zA-Z\s]*$/;
         if (!nameRegex.test(value)) {
           setNameError("Name can only contain alphabetic characters.");
@@ -40,7 +67,6 @@ const AddProperty = () => {
         const filteredValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove invalid characters in real-time
         setFormData({ ...formData, [name]: filteredValue });
       } else if (name === "price") {
-        // Allow only numeric characters and a single decimal point
         const priceRegex = /^\d*\.?\d*$/;
         if (!priceRegex.test(value)) {
           setPriceError("Price can only contain numbers.");
@@ -48,7 +74,7 @@ const AddProperty = () => {
             setPriceError(""); // Clear the error message after 3 seconds
           }, 3000);
         }
-        const filteredValue = value.replace(/[^0-9.]/g, ""); // Remove any non-numeric characters except '.'
+        const filteredValue = value.replace(/[^0-9.]/g, ""); // Remove non-numeric characters except '.'
         setFormData({ ...formData, [name]: filteredValue });
       } else {
         setFormData({ ...formData, [name]: value });
@@ -138,8 +164,7 @@ const AddProperty = () => {
                 placeholder="Property Name"
                 required
               />
-              {nameError && <p className="form-message error">{nameError}</p>}{" "}
-              {/* Display name error */}
+              {nameError && <p className="form-message error">{nameError}</p>}
             </div>
             <div className="form-group">
               <input
@@ -160,8 +185,7 @@ const AddProperty = () => {
                 placeholder="Price"
                 required
               />
-              {priceError && <p className="form-message error">{priceError}</p>}{" "}
-              {/* Display price error */}
+              {priceError && <p className="form-message error">{priceError}</p>}
             </div>
             <div className="form-group">
               <textarea
@@ -180,6 +204,7 @@ const AddProperty = () => {
                 onChange={handleChange}
                 required
               />
+              {sizeError && <p className="form-message error">{sizeError}</p>}
             </div>
             <div className="form-group-checkbox">
               <label>Sold Out</label>
@@ -213,7 +238,6 @@ const AddProperty = () => {
               </button>
             </div>
 
-            {/* Display error message if fields are missing */}
             {fieldError && <p className="form-message error">{fieldError}</p>}
             {successMessage && <p className="form-message">{successMessage}</p>}
             {errorMessage && (

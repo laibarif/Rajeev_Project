@@ -62,7 +62,7 @@ const Footer = () => {
             <li><a href="/why-sell-with-us">Why sell with us</a></li>
             <li><a href="/social-media-reach">Why are we in market</a></li>
             <li><a href="/service/mortgage-broker">Services</a></li>
-            <li><a href="/chatwithus">Chat with us</a></li>
+            <li><a href="/chatwithus">Connect with us</a></li>
             <li><a href="/about-us">About us</a></li>
           </ul>
         </div>
@@ -94,13 +94,14 @@ const Footer = () => {
               <FaYoutube size={30} />
             </a>
           </div>
+          <h6><a href="https://propertybuyersaustraliagroup.com.au/">Visit old Webiste</a></h6>
         </div>
       </div>
 
       {/* Bottom Section */}
       <div className="footer-bottom">
         <p>© Copyright Property Buyers Australia Group</p>
-        <p><a href="https://propertybuyersaustraliagroup.com.au/privacy%20-policy/">Privacy Policy</a> | <a href="https://propertybuyersaustraliagroup.com.au/terms-conditions/">Terms and Conditions</a></p>
+        <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-condition">Terms and Conditions</a></p>
       </div>
     </footer>
   );

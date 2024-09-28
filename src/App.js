@@ -11,6 +11,8 @@ import PropertyDetails from './FrontEnd/PropertyDetails/PropertyDetails';
 import Enquiry from './FrontEnd/Enquiry/Enquiry'; 
 import WhySellWithUs from './FrontEnd/WhySellWithUs/WhySellWithUs';
 import AboutUs from './FrontEnd/AboutUs/AboutUs';
+import TermsCondition from './FrontEnd/TermsCondition/TermsCondition';
+import PrivacyPolicy from './FrontEnd/PrivacyPolicy/PrivacyPolicy';
 import SocialMediaReach from './FrontEnd/SocialMediaReach/SocialMediaReach';
 import './App.css';
 
@@ -27,6 +29,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/adminpage" element={<Adminpage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-condition" element={<TermsCondition />} />
         <Route path="/why-sell-with-us" element={<WhySellWithUs />} />
         <Route path="/social-media-reach" element={<SocialMediaReach />} />
         <Route path="/property/:id" element={<PropertyDetails />} />
