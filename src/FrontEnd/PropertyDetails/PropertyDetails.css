@@ -31,6 +31,10 @@
   border-radius: 5px;
 }
 
+.property-content{
+  text-align: center;
+}
+
 /* Property content header */
 .property-content h3 {
   margin-bottom: 10px;

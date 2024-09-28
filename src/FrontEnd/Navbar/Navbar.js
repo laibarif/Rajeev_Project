@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import logo from "../../assets/LogowithWhiteBG.svg";
+import logo from "../../assets/FinalWhiteBG.svg";
 import './Navbar.css';
 
 function Navbar() {
@@ -19,7 +19,9 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-brand">
-                <img src={logo} alt="Logo" className="responsive-logo" />
+            <Link to="/"> 
+                    <img src={logo} alt="Logo" className="responsive-logo" />
+                </Link>
                 <h2 className="title">Blessed BY PBA</h2>
             </div>
 

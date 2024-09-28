@@ -187,6 +187,64 @@ app.post("/api/add-property", upload.single("image"), (req, res) => {
   });
 });
 
+app.put('/api/properties/:id', (req, res) => {
+  const { id } = req.params;
+  const { sold_out } = req.body;
+  const soldOutValue = sold_out === true || sold_out === 'true' ? 1 : 0; // Convert boolean to 1 or 0
+
+  const query = 'UPDATE properties SET sold_out = ? WHERE id = ?';
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      return res.status(500).send("Database connection error");
+    }
+
+    connection.query(query, [soldOutValue, id], (err, result) => {
+      connection.release();
+
+      if (err) {
+        console.error('Error updating property status:', err);
+        return res.status(500).json({ message: 'Error updating property status' });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Property not found' });
+      }
+
+      res.status(200).json({ message: 'Property status updated successfully' });
+    });
+  });
+});
+
+app.delete('/api/properties/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'DELETE FROM properties WHERE id = ?';
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error connecting to MySQL:", err);
+      return res.status(500).send("Database connection error");
+    }
+
+    connection.query(query, [id], (err, result) => {
+      connection.release();
+
+      if (err) {
+        console.error("Error deleting property:", err);
+        return res.status(500).json({ message: "Error deleting property" });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: "Property not found" });
+      }
+
+      res.status(200).json({ message: "Property deleted successfully" });
+    });
+  });
+});
+
+
 // API to view all properties
 app.get("/api/view-properties", (req, res) => {
   const query = "SELECT * FROM properties";

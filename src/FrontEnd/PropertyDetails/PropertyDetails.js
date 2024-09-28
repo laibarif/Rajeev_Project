@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate,Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import './PropertyDetails.css';  // Add your styles here
 import { FaWhatsapp, FaFacebook, FaEnvelope, FaInstagram, FaLinkedin, FaTwitter, FaTimes } from 'react-icons/fa';
 
@@ -13,7 +13,7 @@ const PropertyDetails = () => {
     useEffect(() => {
         const fetchPropertyDetails = async () => {
             try {
-                const response = await axios.get(`http://77.37.125.30:5000/api/property/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/property/${id}`);
                 setProperty(response.data);
             } catch (error) {
                 console.error('Error fetching property details:', error);
@@ -69,47 +69,56 @@ const PropertyDetails = () => {
     return (
         <div className="property-details-container">
             <div className="property-detail-card">
-                <div className="property-image-container">
-                    <img
-                        src={`http://77.37.125.30:5000${property.image || '/assets/default-property.jpg'}`}
-                        alt={property.name}
-                        className="property-image"
-                    />
+                <div
+                    key={property.id}
+                    className={`property-card ${property.sold_out ? 'sold-out-card' : ''}`} // Conditional class for sold out properties
+                >
+                    <div className="property-image-container">
+                        <img
+                            src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
+                            alt={property.name}
+                            className="property-image"
+                        />
+                    </div>
+                    <div className="property-content">
+                        <h3>{property.name}</h3>
+                        <p><strong>Location:</strong> {property.location}</p>
+                        <p><strong>Price:</strong> {property.price}</p>
+                        <p>{property.description}</p>
+                        {property.sold_out ? (
+                            <p className="sold-out">Sold Out</p>
+                        ) : (
+                            <p className="available">Available</p>
+                        )}
+                    </div>
                 </div>
-                <div className="property-content">
-                    <h3>{property.name}</h3>
-                    <p><strong>Location:</strong> {property.location}</p>
-                    <p><strong>Price:</strong> {property.price}</p>
-                    <p>{property.description}</p>
+                </div>
+                {/* Aligning buttons vertically on the right */}
+                <div className="property-actions">
+                    <button className="property-action-btn" onClick={handleEnquire}>Enquire</button>
+
+                    <div className="property-action-btn">
+                        <button className="" onClick={toggleIcons}>Refer Us</button>
+
+                        {/* Social Media Icons */}
+                        {showIcons && (
+                            <div className="property-social-icons-container">
+                                <FaWhatsapp className="property-social-icon" onClick={shareOnWhatsApp} />
+                                <FaFacebook className="property-social-icon" onClick={shareOnFacebook} />
+                                <FaEnvelope className="property-social-icon" onClick={shareOnEmail} />
+                                <FaInstagram className="property-social-icon" onClick={shareOnInstagram} />
+                                <FaLinkedin className="property-social-icon" onClick={shareOnLinkedIn} />
+                                <FaTwitter className="property-social-icon" onClick={shareOnTwitter} />
+                                <FaTimes className="property-social-icon close-icon" onClick={toggleIcons} />
+                            </div>
+                        )}
+                    </div>
+                    <div className="property-action-btn">
+                        <Link to="/social-media-reach">Follow Us</Link>
+                    </div>
                 </div>
             </div>
-
-            {/* Aligning buttons vertically on the right */}
-            <div className="property-actions">
-                <button className="property-action-btn" onClick={handleEnquire}>Enquire</button>
-
-                <div className="property-action-btn">
-                    <button className="" onClick={toggleIcons}>Refer Us</button>
-
-                    {/* Social Media Icons */}
-                    {showIcons && (
-                        <div className="property-social-icons-container">
-                            <FaWhatsapp className="property-social-icon" onClick={shareOnWhatsApp} />
-                            <FaFacebook className="property-social-icon" onClick={shareOnFacebook} />
-                            <FaEnvelope className="property-social-icon" onClick={shareOnEmail} />
-                            <FaInstagram className="property-social-icon" onClick={shareOnInstagram} />
-                            <FaLinkedin className="property-social-icon" onClick={shareOnLinkedIn} />
-                            <FaTwitter className="property-social-icon" onClick={shareOnTwitter} />
-                            <FaTimes className="property-social-icon close-icon" onClick={toggleIcons} />
-                        </div>
-                    )}
-                </div>
-                <div className="property-action-btn">
-                    <Link to="/social-media-reach">Follow Us</Link>
-                </div>
-            </div>
-        </div>
-    );
+            );
 };
 
-export default PropertyDetails;
+            export default PropertyDetails;

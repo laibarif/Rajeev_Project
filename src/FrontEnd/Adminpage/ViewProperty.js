@@ -35,13 +35,63 @@ const ViewProperty = () => {
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // Toggle property status
+  const toggleStatus = (id, index) => {
+    console.log("Property ID to update:", id);
+    const updatedProperties = [...properties];
+    updatedProperties[index].sold_out = !updatedProperties[index].sold_out;
+    setProperties(updatedProperties);
+
+    axios
+      .put(`http://localhost:5000/api/properties/${id}`, {
+        sold_out: updatedProperties[index].sold_out,
+      })
+      .then((response) => {
+        console.log("Property status updated successfully.");
+      })
+      .catch((error) => {
+        console.error(
+          "Error updating property status:",
+          error.response ? error.response.data : error.message
+        );
+      });
+  };
+
+  // Delete property
+  const deleteProperty = (id, index) => {
+    if (window.confirm("Are you sure you want to delete this property?")) {
+      axios
+        .delete(`http://localhost:5000/api/properties/${id}`)
+        .then((response) => {
+          console.log("Property deleted successfully.");
+
+          // Update state to remove the deleted property from the list
+          const updatedProperties = properties.filter(
+            (_, propertyIndex) => propertyIndex !== index
+          );
+          setProperties(updatedProperties);
+        })
+        .catch((error) => {
+          console.error(
+            "Error deleting property:",
+            error.response ? error.response.data : error.message
+          );
+        });
+    }
+  };
+
   return (
     <div className="view-properties-container">
       <h2 className="featured-heading">Featured Properties</h2>
       <div className="property-grid">
         {currentProperties.length > 0 ? (
           currentProperties.map((property, index) => (
-            <div key={index} className="property-card">
+            <div
+              key={index}
+              className={`property-card ${
+                property.sold_out ? "sold-out-card" : ""
+              }`}
+            >
               <div className="property-image-container">
                 <img
                   src={`${BACKEND_URL}${
@@ -65,6 +115,22 @@ const ViewProperty = () => {
                 ) : (
                   <p className="available">Available</p>
                 )}
+
+                {/* Change Status Button */}
+                <button
+                  className="change-status-btn"
+                  onClick={() => toggleStatus(property.id, index)}
+                >
+                  Change Status
+                </button>
+
+                {/* Delete Property Button */}
+                <button
+                  className="delete-property-btn"
+                  onClick={() => deleteProperty(property.id, index)}
+                >
+                  Delete Property
+                </button>
               </div>
             </div>
           ))

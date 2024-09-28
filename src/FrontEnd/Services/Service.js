@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Service.css';
 import { useParams } from 'react-router-dom';  // Import to get URL params
 import image from "../../assets/service.svg";
@@ -21,6 +21,16 @@ const Services = () => {
     const [showIcons, setShowIcons] = useState(false);
 
     const { serviceType } = useParams();  // Get serviceType from URL
+
+    // useEffect to reset the form when the serviceType changes
+    useEffect(() => {
+        setFormData({
+            name: '',
+            email: '',
+            mobile: '',
+            serviceType: serviceType // Reset the serviceType when the URL changes
+        });
+    }, [serviceType]);
 
     const validateEmail = (email) => {
         const emailParts = email.split('@');
@@ -102,14 +112,14 @@ const Services = () => {
         // Submit the form
         const formWithServiceType = { ...formData, serviceType };
 
-        axios.post('http://77.37.125.30:5000/other-services', formWithServiceType)
+        axios.post('http://localhost:5000/other-services', formWithServiceType)
             .then((response) => {
                 setSuccessMessage(true);
                 setFormData({
                     name: '',
                     email: '',
                     mobile: '',
-                    serviceType: ''
+                    serviceType: serviceType // Keep the current serviceType
                 });
                 setTimeout(() => {
                     setSuccessMessage(false);
