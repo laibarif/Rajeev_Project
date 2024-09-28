@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import './Footer.css'; // Import CSS for styling
-import logo from '../../assets/LogowithRedBG.svg'; // Adjust the path to your logo
+import logo from '../../assets/FinalRedBG.svg'; // Adjust the path to your logo
 
 const Footer = () => {
   const [email, setEmail] = useState('');

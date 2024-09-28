@@ -4,7 +4,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import { FaWhatsapp, FaFacebook, FaEnvelope, FaInstagram, FaLinkedin, FaTwitter, FaTimes } from 'react-icons/fa';
 
-const ViewProperty = () => {
+const Home = () => {
   const [properties, setProperties] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 8;
@@ -30,15 +30,11 @@ const ViewProperty = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const toggleIcons = () => {
-    console.log("BUtton CLIked");
-
     setShowIcons(!showIcons); // Toggle the visibility of the icons
-    console.log('Icons visibility state:', showIcons);
   };
 
   const shareUrl = 'https://propertybuyersaustraliagroup.com.au/landing-page/';
 
-  // Social media share functions
   const shareOnWhatsApp = () => {
     window.open(`https://wa.me/?text=${encodeURIComponent(shareUrl)}`, '_blank');
   };
@@ -69,22 +65,30 @@ const ViewProperty = () => {
       <div className="property-grid">
         {currentProperties.length > 0 ? (
           currentProperties.map((property) => (
-            <div key={property.id} className="property-card">
+            <div
+              key={property.id}
+              className={`property-card ${property.sold_out ? 'sold-out-card' : ''}`} // Conditional class for sold out properties
+            >
               <div className="property-image-container">
-                <img
-                  src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
-                  alt={property.name}
-                  className="property-image"
-                />
+                <Link to={`/property/${property.id}`}>
+                  <img
+                    src={`http://localhost:5000${property.image || '/assets/default-property.jpg'}`}
+                    alt={property.name}
+                    className="property-image"
+                  />
+                </Link>
               </div>
               <div className="property-content">
                 <h3>{property.name}</h3>
                 <p><strong>Location:</strong> {property.location}</p>
                 <p><strong>Price:</strong> {property.price}</p>
                 <p>{property.description.slice(0, 100)}...</p>
-                {/* Link to the Property Details page, passing the property ID */}
+                {property.sold_out ? (
+                  <p className="sold-out">Sold Out</p>
+                ) : (
+                  <p className="available">Available</p>
+                )}
                 <Link to={`/property/${property.id}`} className="property-details-link">View Details</Link>
-
               </div>
             </div>
           ))
@@ -105,11 +109,12 @@ const ViewProperty = () => {
           </button>
         ))}
       </div>
+
       <div className="additional-buttons">
         <div className="action-btn-container" >
           <button className="action-btn" onClick={toggleIcons}>Refer Us</button>
 
-          {/* Social Media Icons - Positioned close to the Refer Us button */}
+          {/* Social Media Icons */}
           {showIcons && (
             <div className="home-social-icons-container">
               <FaWhatsapp className="home-social-icon" onClick={shareOnWhatsApp} />
@@ -123,14 +128,13 @@ const ViewProperty = () => {
           )}
         </div>
         <div className="action-btn-container" >
-        <div className="action-btn">
-          <Link to="/social-media-reach" >Follow Us</Link>
-        </div>
+          <div className="action-btn">
+            <Link to="/social-media-reach">Follow Us</Link>
+          </div>
         </div>
       </div>
-
     </div>
   );
 };
 
-export default ViewProperty;
+export default Home;

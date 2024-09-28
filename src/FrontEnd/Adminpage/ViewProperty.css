@@ -79,24 +79,38 @@
 }
 
 /* Change Status Button */
-.change-status-btn {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.5rem 1rem;
-  background-color: #A93339;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 14px; /* Reduce button font size for better appearance */
+.change-status-btn, 
+.delete-property-btn {
+  display: inline-block;
+  width: 80%; /* Adjust width to make buttons consistent */
+  padding: 8px 12px; /* Reduce padding for smaller button size */
+  border-radius: 5px;
+  font-size: 14px; /* Slightly smaller text */
+  font-weight: bold;
   cursor: pointer;
+  margin: 5px auto; /* Add margin for better spacing */
+  text-align: center;
+}
+
+/* Specific Style for Delete Property Button */
+.delete-property-btn {
+  background-color: #A93339; /* Red-like color for delete button */
+  color: white;
+}
+
+.delete-property-btn:hover {
+  background-color: #A93339; /* Darker red on hover */
+}
+
+/* Specific Style for Change Status Button */
+.change-status-btn {
+  background-color: #d14047; /* Orange-like color */
+  color: white;
 }
 
 .change-status-btn:hover {
-  background-color: #d68d91;
+  background-color: #d14047;
 }
-
 /* Responsive Design for Different Screen Sizes */
 @media (max-width: 1024px) {
   .property-grid {
