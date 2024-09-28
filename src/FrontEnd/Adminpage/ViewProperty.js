@@ -43,7 +43,7 @@ const ViewProperty = () => {
     setProperties(updatedProperties);
 
     axios
-      .put(`http://localhost:5000/api/properties/${id}`, {
+      .put(`${BACKEND_URL}/api/properties/${id}`, {
         sold_out: updatedProperties[index].sold_out,
       })
       .then((response) => {
@@ -61,7 +61,7 @@ const ViewProperty = () => {
   const deleteProperty = (id, index) => {
     if (window.confirm("Are you sure you want to delete this property?")) {
       axios
-        .delete(`http://localhost:5000/api/properties/${id}`)
+        .delete(`${BACKEND_URL}/api/properties/${id}`)
         .then((response) => {
           console.log("Property deleted successfully.");
 

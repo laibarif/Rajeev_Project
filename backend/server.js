@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
+const https = require("https");
 const fs = require("fs");
 require("dotenv").config();
 
@@ -13,11 +14,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/fullchain.pem'),
-};
-
+// const options = {
+//   key: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/privkey.pem'),
+//   cert: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/fullchain.pem'),
+// };
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
@@ -193,12 +193,12 @@ app.post("/api/add-property", upload.single("image"), (req, res) => {
   });
 });
 
-app.put('/api/properties/:id', (req, res) => {
+app.put("/api/properties/:id", (req, res) => {
   const { id } = req.params;
   const { sold_out } = req.body;
-  const soldOutValue = sold_out === true || sold_out === 'true' ? 1 : 0; // Convert boolean to 1 or 0
+  const soldOutValue = sold_out === true || sold_out === "true" ? 1 : 0; // Convert boolean to 1 or 0
 
-  const query = 'UPDATE properties SET sold_out = ? WHERE id = ?';
+  const query = "UPDATE properties SET sold_out = ? WHERE id = ?";
 
   pool.getConnection((err, connection) => {
     if (err) {
@@ -210,22 +210,24 @@ app.put('/api/properties/:id', (req, res) => {
       connection.release();
 
       if (err) {
-        console.error('Error updating property status:', err);
-        return res.status(500).json({ message: 'Error updating property status' });
+        console.error("Error updating property status:", err);
+        return res
+          .status(500)
+          .json({ message: "Error updating property status" });
       }
 
       if (result.affectedRows === 0) {
-        return res.status(404).json({ message: 'Property not found' });
+        return res.status(404).json({ message: "Property not found" });
       }
 
-      res.status(200).json({ message: 'Property status updated successfully' });
+      res.status(200).json({ message: "Property status updated successfully" });
     });
   });
 });
 
-app.delete('/api/properties/:id', (req, res) => {
+app.delete("/api/properties/:id", (req, res) => {
   const { id } = req.params;
-  const query = 'DELETE FROM properties WHERE id = ?';
+  const query = "DELETE FROM properties WHERE id = ?";
 
   pool.getConnection((err, connection) => {
     if (err) {
@@ -249,7 +251,6 @@ app.delete('/api/properties/:id', (req, res) => {
     });
   });
 });
-
 
 // API to view all properties
 app.get("/api/view-properties", (req, res) => {
