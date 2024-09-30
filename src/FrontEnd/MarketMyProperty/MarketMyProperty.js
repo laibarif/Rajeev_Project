@@ -97,6 +97,7 @@ const MarketMyProperty = () => {
     // If email is valid, clear the error message
     setErrorMessage("");
 
+    console.log("Submitting form data:", formData);
     axios
       .post(`${BACKEND_URL}/submit-property`, formData)
       .then((response) => {

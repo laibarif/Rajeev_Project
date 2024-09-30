@@ -22,7 +22,7 @@ function Navbar() {
             <Link to="/"> 
                     <img src={logo} alt="Logo" className="responsive-logo" />
                 </Link>
-                <h2 className="title">Blessed BY PBA</h2>
+                <h2 className="title">BLESSED BY PBA</h2>
             </div>
 
             {/* Desktop Navigation */}

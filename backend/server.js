@@ -65,12 +65,15 @@ app.post("/submit-form", (req, res) => {
 // API to handle property submission
 app.post("/submit-property", (req, res) => {
   const { name, email, mobile, comment, address } = req.body;
+
+  console.log("Received form data:", req.body);  // Log the incoming form data
+
   const query =
     "INSERT INTO market_property (name, email, mobile, comment, address) VALUES (?, ?, ?, ?, ?)";
 
   pool.getConnection((err, connection) => {
     if (err) {
-      console.error("Error connecting to MySQL:", err);
+      console.error("Error connecting to MySQL:", err);  // Log MySQL connection error
       return res.status(500).send("Database connection error");
     }
 
@@ -78,7 +81,7 @@ app.post("/submit-property", (req, res) => {
       connection.release();
 
       if (err) {
-        console.error("Error inserting data:", err); // Log the full error
+        console.error("Error inserting data:", err);  // Log the detailed SQL error
         res.status(500).send("Error storing data");
       } else {
         res.status(200).send("Data stored successfully");
@@ -86,6 +89,7 @@ app.post("/submit-property", (req, res) => {
     });
   });
 });
+
 
 
 // API to handle other services form submission

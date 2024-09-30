@@ -27,7 +27,7 @@ const Footer = () => {
         {/* Left Section */}
         <div className="footer-section">
           <img src={logo} alt="Blessed By PBA" className="footer-logo" />
-          <h2 className="footer-brand-title">Blessed By PBA</h2>
+          <h2 className="footer-brand-title">BLESSED BY PBA</h2>
           <div className="footer-contact">
             <div className="contact-item">
               <FaPhoneAlt />
