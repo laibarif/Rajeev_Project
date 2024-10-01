@@ -1,9 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import './WhySellWithUs.css';
 import { Link } from 'react-router-dom';
 
 function WhySellWithUs() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     return (
         <div className="why-sell-with-us">
             <h1>Why Sell With Us</h1>

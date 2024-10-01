@@ -15,6 +15,9 @@ import {
 import { BACKEND_URL } from "../../utils/constant";
 
 const EnquiryPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const location = useLocation();
   const { name, id } = location.state || {}; // Retrieve data passed through navigate
 

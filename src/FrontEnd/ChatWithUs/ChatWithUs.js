@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./ChatWithUs.css";
 import axios from "axios";
 import image from "../../assets/chatwithus.svg";
@@ -135,6 +136,10 @@ const ChatWithUs = () => {
       "_blank"
     );
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="market-property-container">

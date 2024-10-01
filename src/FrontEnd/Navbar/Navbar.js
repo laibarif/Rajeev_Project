@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, useDisclosure } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
@@ -6,6 +7,9 @@ import logo from "../../assets/FinalWhiteBG.svg";
 import './Navbar.css';
 
 function Navbar() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const { isOpen, onOpen, onClose } = useDisclosure(); // For main drawer (mobile)
     const { isOpen: isServicesOpen, onOpen: onServicesOpen, onClose: onServicesClose } = useDisclosure(); // For "Other Services" drawer (mobile)
     const [isDropdownOpen, setDropdownOpen] = useState(false);  // State for "Other Services" dropdown (desktop)

@@ -20,6 +20,9 @@ const Home = () => {
   const [showIcons, setShowIcons] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     const fetchProperties = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/api/view-properties`);

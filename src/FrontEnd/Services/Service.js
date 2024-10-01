@@ -30,7 +30,9 @@ const Services = () => {
   const [showIcons, setShowIcons] = useState(false);
 
   const { serviceType } = useParams(); 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     setFormData({
       name: "",

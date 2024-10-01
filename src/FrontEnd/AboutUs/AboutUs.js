@@ -1,10 +1,14 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './AboutUs.css'; // Import the CSS file
 import { FaFacebook, FaInstagram, FaYoutube, FaWhatsapp, FaTwitter, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 
 const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const redirectToExternalPage = (url) => {
     window.location.href = url; // Redirects to the external URL
   };

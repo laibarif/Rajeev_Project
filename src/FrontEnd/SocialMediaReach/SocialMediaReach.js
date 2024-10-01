@@ -1,9 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { FaFacebook, FaUsers, FaInstagram, FaTiktok, FaYoutube, FaWhatsapp } from 'react-icons/fa'; // Import icons
 import './SocialMediaReach.css';
 import { Link } from 'react-router-dom';
 
 function SocialMediaReach() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     return (
         <div className="social-media-reach">
             <h1>Our Social Media Reach</h1>

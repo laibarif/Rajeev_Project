@@ -20,6 +20,10 @@ const PropertyDetails = () => {
   const [showIcons, setShowIcons] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  useEffect(() => {
     const fetchPropertyDetails = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/api/property/${id}`);

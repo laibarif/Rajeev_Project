@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import AddProperty from './AddProperty';
 import ViewProperty from './ViewProperty';
 import './Adminpage.css';
+import { useEffect } from 'react';
 
 const AdminPage = () => {
   const [activeTab, setActiveTab] = useState('add'); // Default to Add Property tab
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="admin-page">

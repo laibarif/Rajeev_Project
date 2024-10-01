@@ -80,6 +80,9 @@ const ViewProperty = () => {
         });
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="view-properties-container">

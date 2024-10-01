@@ -1,8 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './PrivacyPolicy.css'; // Import the CSS for styling
 
 const PrivacyPolicy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="privacy-policy-container">
       <h1 className="privacy-policy-heading">Privacy Policy</h1>

@@ -3,6 +3,7 @@ import "./Adminpage.css";
 import axios from "axios";
 import image from "../../assets/property.svg"; // Replace with your image
 import { BACKEND_URL } from "../../utils/constant";
+import { useEffect } from "react";
 
 const AddProperty = () => {
   const [formData, setFormData] = useState({
@@ -143,6 +144,11 @@ const AddProperty = () => {
       }, 3000);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <div className="market-property-container">

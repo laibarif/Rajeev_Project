@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./MarketMyProperty.css";
 import image from "../../assets/Market.svg";
 import axios from "axios"; // Import axios
@@ -15,6 +16,9 @@ import {
 import { BACKEND_URL } from "../../utils/constant";
 
 const MarketMyProperty = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
