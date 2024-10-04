@@ -123,7 +123,9 @@ const PropertyDetails = () => {
               <strong>Location:</strong> {property.location}
             </p>
             <p>
-              <strong>Price:</strong> {property.price}
+            {/* <strong>Price:</strong> {property.price === 0 ? " " : property.price} */}
+              {/* <strong>Price:</strong> {property.price} */}
+              <strong>Price:</strong> {property.price === 0 || property.price === "0.00" ? " " : property.price}
             </p>
             <p>{property.description}</p>
             {property.sold_out ? (

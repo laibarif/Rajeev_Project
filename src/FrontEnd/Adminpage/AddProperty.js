@@ -67,17 +67,7 @@ const AddProperty = () => {
         }
         const filteredValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove invalid characters in real-time
         setFormData({ ...formData, [name]: filteredValue });
-      } else if (name === "price") {
-        const priceRegex = /^\d*\.?\d*$/;
-        if (!priceRegex.test(value)) {
-          setPriceError("Price can only contain numbers.");
-          setTimeout(() => {
-            setPriceError(""); // Clear the error message after 3 seconds
-          }, 3000);
-        }
-        const filteredValue = value.replace(/[^0-9.]/g, ""); // Remove non-numeric characters except '.'
-        setFormData({ ...formData, [name]: filteredValue });
-      } else {
+      }  else {
         setFormData({ ...formData, [name]: value });
       }
     }
@@ -90,7 +80,6 @@ const AddProperty = () => {
     if (
       !formData.name ||
       !formData.location ||
-      !formData.price ||
       !formData.description ||
       !formData.image
     ) {
@@ -189,7 +178,6 @@ const AddProperty = () => {
                 value={formData.price}
                 onChange={handleChange}
                 placeholder="Price"
-                required
               />
               {priceError && <p className="form-message error">{priceError}</p>}
             </div>

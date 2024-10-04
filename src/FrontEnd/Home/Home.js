@@ -131,7 +131,7 @@ const Home = () => {
                   <strong>Location:</strong> {property.location}
                 </p>
                 <p>
-                  <strong>Price:</strong> {property.price}
+                <strong>Price:</strong> {property.price === 0 || property.price === "0.00" ? " " : property.price}
                 </p>
                 <p>{property.description.slice(0, 100)}...</p>
                 {property.sold_out ? (
