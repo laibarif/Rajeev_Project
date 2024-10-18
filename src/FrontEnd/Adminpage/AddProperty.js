@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Adminpage.css";
 import axios from "axios";
 import image from "../../assets/property.svg"; // Replace with your image
@@ -21,6 +21,9 @@ const AddProperty = () => {
   const [sizeError, setSizeError] = useState(""); // Error message for invalid image size
   const [successMessage, setSuccessMessage] = useState(""); // Success message
   const [errorMessage, setErrorMessage] = useState(""); // Error message
+
+  // Ref for clearing the file input field
+  const fileInputRef = useRef(null);
 
   // Function to handle changes in form fields
   const handleChange = (e) => {
@@ -67,7 +70,7 @@ const AddProperty = () => {
         }
         const filteredValue = value.replace(/[^a-zA-Z\s]/g, ""); // Remove invalid characters in real-time
         setFormData({ ...formData, [name]: filteredValue });
-      }  else {
+      } else {
         setFormData({ ...formData, [name]: value });
       }
     }
@@ -119,6 +122,11 @@ const AddProperty = () => {
         soldOut: false,
       }); // Reset form
 
+      // Clear the file input field
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
       // Remove success message after 3 seconds
       setTimeout(() => {
         setSuccessMessage("");
@@ -137,7 +145,6 @@ const AddProperty = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   return (
     <div className="market-property-container">
@@ -196,6 +203,7 @@ const AddProperty = () => {
                 name="image"
                 accept="image/*"
                 onChange={handleChange}
+                ref={fileInputRef} // Ref for clearing input
                 required
               />
               {sizeError && <p className="form-message error">{sizeError}</p>}

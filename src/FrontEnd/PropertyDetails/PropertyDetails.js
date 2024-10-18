@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, Link,useLocation  } from "react-router-dom";
 import "./PropertyDetails.css"; // Add your styles here
 import {
   FaWhatsapp,
@@ -18,7 +18,7 @@ const PropertyDetails = () => {
   const [property, setProperty] = useState(null);
   const navigate = useNavigate();
   const [showIcons, setShowIcons] = useState(false);
-
+  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -47,6 +47,9 @@ const PropertyDetails = () => {
     });
   };
 
+  const handleBack = () => {
+    navigate("/", { state: { currentPage: location.state?.currentPage || 1 } }); // Pass current page back
+  };
   const toggleIcons = () => {
     setShowIcons(!showIcons); // Toggle the visibility of the icons
   };
@@ -136,7 +139,9 @@ const PropertyDetails = () => {
           </div>
         </div>
       </div>
+      
       <div className="property-actions">
+        <button className="property-action-btn" onClick={handleBack}>Back</button>
         <button className="property-action-btn" onClick={handleEnquire}>
           Enquire
         </button>

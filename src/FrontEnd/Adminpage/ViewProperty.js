@@ -35,7 +35,9 @@ const ViewProperty = () => {
   // Change page
   const paginate = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
+      window.scrollTo(0, 0);
       setCurrentPage(pageNumber);
+      
     }
   };
 
@@ -108,12 +110,12 @@ const ViewProperty = () => {
               <div className="property-content">
                 <h3>{property.name}</h3>
                 <p>
-                  <strong>Location:</strong> {property.location}
+                  <strong>Location:</strong> {property.location.slice(0,15)}...
                 </p>
                 <p>
-                  <strong>Price:</strong> {property.price}
+                  <strong>Price:</strong> {property.price === 0 || property.price === "0.00" ? " " : property.price}
                 </p>
-                <p>{property.description.slice(0, 100)}</p>
+                <p>{property.description.slice(0, 45)}...</p>
                 {property.sold_out ? (
                   <p className="sold-out">Sold Out</p>
                 ) : (

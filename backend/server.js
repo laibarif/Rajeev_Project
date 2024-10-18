@@ -19,7 +19,7 @@ app.use(cors());
 //   cert: fs.readFileSync('/etc/letsencrypt/live/api.blessedbypba.org/fullchain.pem'),
 // };
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 // MySQL connection pool
 const pool = mysql.createPool({
@@ -156,7 +156,7 @@ app.post("/api/login", (req, res) => {
 // Configure multer storage for image upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./uploads");
+    cb(null, "./images");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -168,7 +168,7 @@ const upload = multer({ storage: storage });
 // API to add property with image upload
 app.post("/api/add-property", upload.single("image"), (req, res) => {
   const { name, location, price, description, sold_out } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+  const image = req.file ? `/images/${req.file.filename}` : null;
 
   const soldOutValue = sold_out === "true" || sold_out === true ? 1 : 0;
 

@@ -17,7 +17,7 @@ function SocialMediaReach() {
                     <FaFacebook className="social-icon facebook" />
                     <div className="item-text">
                         <span className="platform-name">Facebook followers:</span>
-                        <span className="follower-count">123K</span>
+                        <span className="follower-count">1.3K</span>
                     </div>
                     <a href="https://www.facebook.com/propertybuyersaus" target="_blank" rel="noopener noreferrer">
                         <button className="follow-button">Follow</button>
@@ -28,7 +28,7 @@ function SocialMediaReach() {
                     <FaUsers className="social-icon users" />
                     <div className="item-text">
                         <span className="platform-name">Facebook group:</span>
-                        <span className="follower-count">12K</span>
+                        <span className="follower-count">13.5K</span>
                     </div>
                     <a href="https://www.facebook.com/groups/propertybuyersaustralia" target="_blank" rel="noopener noreferrer">
                         <button className="join-button">Join</button>
@@ -39,7 +39,7 @@ function SocialMediaReach() {
                     <FaInstagram className="social-icon instagram" />
                     <div className="item-text">
                         <span className="platform-name">Instagram:</span>
-                        <span className="follower-count">7K</span>
+                        <span className="follower-count">9.2K</span>
                     </div>
                     <a href="https://instagram.com/propertybuyersaustralia?igshid=NzZlODBkYWE4Ng==" target="_blank" rel="noopener noreferrer">
                         <button className="follow-button">Follow</button>
@@ -50,7 +50,7 @@ function SocialMediaReach() {
                     <FaTiktok className="social-icon tiktok" />
                     <div className="item-text">
                         <span className="platform-name">TikTok:</span>
-                        <span className="follower-count">80K</span>
+                        <span className="follower-count">13.1K</span>
                     </div>
                     <a href="https://www.tiktok.com/@propertybuyersaus" target="_blank" rel="noopener noreferrer">
                         <button className="follow-button">Follow</button>
@@ -61,7 +61,7 @@ function SocialMediaReach() {
                     <FaYoutube className="social-icon youtube" />
                     <div className="item-text">
                         <span className="platform-name">YouTube:</span>
-                        <span className="follower-count">12K</span>
+                        <span className="follower-count">3.3K</span>
                     </div>
                     <a href="https://www.youtube.com/@propertybuyersaustralia" target="_blank" rel="noopener noreferrer">
                         <button className="subscribe-button">Subscribe</button>
@@ -72,7 +72,7 @@ function SocialMediaReach() {
                     <FaWhatsapp className="social-icon whatsapp" />
                     <div className="item-text">
                         <span className="platform-name">WhatsApp:</span>
-                        <span className="follower-count">70K</span>
+                        <span className="follower-count">Thousands of members</span>
                     </div>
                     <a href="https://api.whatsapp.com/send/?phone=61432555415&text=Hi&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
                         <button className="join-button">Join</button>

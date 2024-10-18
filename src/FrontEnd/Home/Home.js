@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   FaWhatsapp,
   FaFacebook,
@@ -18,7 +18,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const propertiesPerPage = 8;
   const [showIcons, setShowIcons] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,7 +43,13 @@ const Home = () => {
 
   const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      window.scrollTo(0, 0);
+      setCurrentPage(pageNumber);
+      
+    }
+  };
   const goToNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
@@ -102,6 +108,11 @@ const Home = () => {
       "_blank"
     );
   };
+  const viewDetails = (property) => {
+    navigate(`/property/${property.id}`, {
+      state: { currentPage: currentPage }, // Pass current page number
+    });
+  };
 
   return (
     <div className="view-properties-container">
@@ -128,19 +139,19 @@ const Home = () => {
               <div className="property-content">
                 <h3>{property.name}</h3>
                 <p>
-                  <strong>Location:</strong> {property.location}
+                  <strong>Location:</strong> {property.location.slice(0,15)}...
                 </p>
                 <p>
                 <strong>Price:</strong> {property.price === 0 || property.price === "0.00" ? " " : property.price}
                 </p>
-                <p>{property.description.slice(0, 100)}...</p>
+                <p>{property.description.slice(0, 50)}...</p>
                 {property.sold_out ? (
                   <p className="sold-out">Sold Out</p>
                 ) : (
                   <p className="available">Available</p>
                 )}
-                <Link to={`/property/${property.id}`} className="property-details-link">View Details</Link>
-              </div>
+                <Link to={`/property/${property.id}`} onClick={() => viewDetails(property)} className="property-details-link">View Details</Link>
+                 </div>
             </div>
           ))
         ) : (

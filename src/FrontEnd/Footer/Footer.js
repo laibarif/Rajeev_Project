@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import './Footer.css'; // Import CSS for styling
 import logo from '../../assets/FinalRedBG.svg'; // Adjust the path to your logo
@@ -60,13 +61,13 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul className="footer-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/market-my-property">Market my Property</a></li>
-            <li><a href="/why-sell-with-us">Why sell with us</a></li>
-            <li><a href="/social-media-reach">Why are we in market</a></li>
-            <li><a href="/service/mortgage-broker">Services</a></li>
-            <li><a href="/chatwithus">Connect with us</a></li>
-            <li><a href="/about-us">About us</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/market-my-property">Market my Property</Link></li>
+            <li><Link to="/why-sell-with-us">Why sell with us</Link></li>
+            <li><Link to="/social-media-reach">Why are we in market</Link></li>
+            <li><Link to="/service/mortgage-broker">Services</Link></li>
+            <li><Link to="/chatwithus">Connect with us</Link></li>
+            <li><Link to="/about-us">About us</Link></li>
           </ul>
         </div>
 

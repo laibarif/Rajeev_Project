@@ -3,18 +3,18 @@
   "name": "BLESSED BY PBA",
   "icons": [
     {
-      "src": "FinalWhiteBG.svg",
+      "src": "FinalWhiteBG.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "FinalWhiteBG.svg",
-      "type": "image/svg+xml",
+      "src": "logo192.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "FinalWhiteBG.svg",
-      "type": "image/svg+xml",
+      "src": "logo512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
