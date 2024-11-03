@@ -72,7 +72,7 @@ function SocialMediaReach() {
                     <FaWhatsapp className="social-icon whatsapp" />
                     <div className="item-text">
                         <span className="platform-name">WhatsApp:</span>
-                        <span className="follower-count">Thousands of members</span>
+                        <span className="follower-count">Thousands 1000 of members</span>
                     </div>
                     <a href="https://api.whatsapp.com/send/?phone=61432555415&text=Hi&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
                         <button className="join-button">Join</button>

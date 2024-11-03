@@ -1,4 +1,5 @@
 import { Route, Routes,useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import Navbar from './FrontEnd/Navbar/Navbar'; 
 import Home from './FrontEnd/Home/Home'; 
 import Footer from './FrontEnd/Footer/Footer'; 
@@ -18,6 +19,20 @@ import './App.css';
 
 function App() {
   const location = useLocation();
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+  // script.src = "https://widgets.leadconnectorhq.com/loader.js";
+  // script.setAttribute("data-resources-url", "https://widgets.leadconnectorhq.com/chat-widget/loader.js");
+  // script.setAttribute("data-widget-id", "6720197d9d106a103e0fef77");
+  // script.async = true;
+  // script.onload = () => console.log("Chat widget loaded successfully.");
+  // script.onerror = (error) => console.log("Error loading chat widget:", error);
+  // document.body.appendChild(script);
+
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
   return (
     <>
       <Navbar />
